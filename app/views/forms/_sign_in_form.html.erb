@@ -1,14 +1,13 @@
-<h2>Log in</h2>
-
 <%= form_for(:user, as: 'user', url: session_path(:user)) do |f| %>
-  <div class="field">
+  <h2>Log in</h2>
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, class: 'form-control', autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
   </div>
 
   <div class="actions">

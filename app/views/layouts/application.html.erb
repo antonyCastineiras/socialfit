@@ -9,11 +9,13 @@
   </head>
 
   <body>
-  	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if current_user %>
-    	<%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    <% end %>
-    <%= yield %>
+    <div class="container-fluid">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% if current_user %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
