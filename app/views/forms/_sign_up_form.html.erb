@@ -1,9 +1,6 @@
 <h2>Sign up</h2>
 
 <%= form_for(:user, as: 'user', url: registration_path(:user)) do |f| %>
-
-  
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
