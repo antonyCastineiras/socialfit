@@ -7,6 +7,7 @@ end
 
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_calendar', "~> 2.0"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,1 +1,5 @@
 <h1><%= @user.email %>'s homepage</h1>
+
+<%= month_calendar do |date| %>
+	<%= date.day %>
+<% end %>
