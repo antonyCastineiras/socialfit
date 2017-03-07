@@ -1,0 +1,21 @@
+<%= form_tag events_path, method: :post do %>
+	<div class="form-group">
+		<%= label_tag :name, "Name: " %>
+		<%= text_field_tag :name, nil, class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag :info %>
+		<%= text_area_tag :info, nil, class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag :start_time %>
+		<%= datetime_local_field_tag :start_time, nil, class: "form-control" %>
+	</div>
+
+	<div class="actions">
+		<%= submit_tag "Create Event", class: "btn btn-primary" %>
+	</div>
+
+<% end %>
