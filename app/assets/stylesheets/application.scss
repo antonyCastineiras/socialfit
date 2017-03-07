@@ -19,6 +19,20 @@
 @import "forms";
 @import "calendar";
 
-.container-fluid {
-	width: 1200px;
+header .container-fluid {
+	width: 50%;	
 }
+
+#home-page-forms-container form {
+	width: 30%;
+	margin: auto;
+}
+
+
+#controls {
+	#new-event-form, #sign-up-form  {
+		display: none;
+	}
+}
+
+// elements to be hidden

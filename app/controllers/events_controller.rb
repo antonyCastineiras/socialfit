@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 		if event.save
 			redirect_to user_home_path
 		else
-			flash[:error] = "unable to create event"
+			flash[:notice] = "unable to create event"
 		end
 	end
 

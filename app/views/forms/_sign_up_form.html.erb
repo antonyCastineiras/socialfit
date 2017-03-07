@@ -1,4 +1,4 @@
-<%= form_for(:user, as: 'user', url: registration_path(:user)) do |f| %>
+<%= form_for(:user, as: 'user', url: registration_path(:user), html: {id: "sign-up-form"}) do |f| %>
   <h2>Sign up</h2>
   <div class="form-group">
     <%= f.label :email %><br />
