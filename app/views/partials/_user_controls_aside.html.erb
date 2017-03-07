@@ -6,7 +6,34 @@
 		<%= render partial: 'forms/new_event_form' %>
   </div>
 
+	<% if @event %>
+		<div class="dropdown">
+			<a href="" class="toggle-dropdown">Invite to event</a>
+			<%= render partial: 'forms/new_event_invite_form' %>
+		</div>
+	<% end %>
+
   <% if @event && @event.user == current_user %>
   	<%= link_to "Delete Event", event_path(@event), method: :delete %>
 	<% end %>
+
+
+	<h4>Your Invites</h4>	
+	<% if current_user.invites.any? %>
+		<div class="dropdown">
+			<a href="" class="toggle-dropdown">View >></a>
+			<div id="user-invites-list">
+				<% current_user.invites.each do |invite| %>
+					<p><%= invite.event.name %></p>
+					<%= link_to "Join Event", accept_invite_path(invite), method: :post %>
+					<%= link_to "Reject Invite", reject_invite_path(invite), method: :post %>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<p>currently no invites</p>
+	<% end %>
+
+
+
 </aside>

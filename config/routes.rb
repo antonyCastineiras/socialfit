@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'invites/accept'
+
+  get 'invites/reject'
+
   devise_for :users, controllers: {
   	registrations: 'registrations',
   	sessions: 'sessions'
@@ -9,4 +13,8 @@ Rails.application.routes.draw do
   get 'pages/home' => 'pages#home', as: 'user_home'
 
   resources :events
-end
+  resources :invites, only: [:create]
+
+  post 'invites/:id/accept' => 'invites#accept', as: 'accept_invite'
+  post 'invites/:id/reject' => 'invites#reject', as: 'reject_invite'
+end 
