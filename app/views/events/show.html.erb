@@ -1,8 +1,4 @@
 <h3><%= @event.name %></h3>
 <p><%= @event.start_time.strftime("Starts at: %H:%M") %></p>
-<p><%= @event.info %></p>
+<p>Info: <%= @event.info %></p>
 <p>Organized by: <%= @event.organizer.email %></p>
-
-<% if @event.user == current_user %>
-	<%= link_to "Delete Event", event_path(@event), method: :delete %>
-<% end %>

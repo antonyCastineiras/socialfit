@@ -1,10 +1,12 @@
 <aside id="controls" class="col-md-3">
+  <h4>Event Options</h4>
+	
 	<div class="dropdown">
   	<a href="" class="toggle-dropdown">Create Event</a>
 		<%= render partial: 'forms/new_event_form' %>
   </div>
-  <div class="dropdown">
-  	<a href="" class="toggle-dropdown">Sign Up</a>
-		<%= render partial: 'forms/sign_up_form' %>
-  </div>
+
+  <% if @event && @event.user == current_user %>
+  	<%= link_to "Delete Event", event_path(@event), method: :delete %>
+	<% end %>
 </aside>
