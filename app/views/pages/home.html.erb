@@ -1,7 +1,12 @@
 <h1><%= @user.email %>'s homepage</h1>
 
-<%= month_calendar do |date| %>
+<%= month_calendar events: @events do |date,events| %>
 	<%= date.day %>
+	<% events.each do |event| %>
+		<div class="calendar-event">
+			<p><%= event.name %></p>
+		</div>
+	<% end %>
 <% end %>
 
 <%= render partial: 'forms/new_event_form' %>
