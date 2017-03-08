@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_friend_request_user, only: [:accept, :reject]
 
 	def create
 		requested_friend = User.where("email = '#{params[:email]}'").first
@@ -11,10 +12,16 @@ class FriendshipsController < ApplicationController
 	end
 
 	def accept
-		@friend_request_user = User.find(params[:id])
 		current_user.accept_request(@friend_request_user)
 	end
 
 	def reject
+		current_user.decline_request(@friend_request_user) 
+	end
+
+	private 
+
+	def set_friend_request_user
+		@friend_request_user = User.find(params[:id])
 	end
 end
