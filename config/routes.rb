@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'invites/:id/reject' => 'invites#reject', as: 'reject_invite'
 
   post 'friendships' => 'friendships#create'
-  post 'friendships/accept' => 'friendships#accept', as: 'accept_friend_request'
-  post 'friendships/reject' => 'friendships#reject', as: 'reject_friend_request'
+  post 'friendships/accept/:id' => 'friendships#accept', as: 'accept_friend_request'
+  post 'friendships/reject/:id' => 'friendships#reject', as: 'reject_friend_request'
 
 end 

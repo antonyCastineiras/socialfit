@@ -11,6 +11,8 @@ class FriendshipsController < ApplicationController
 	end
 
 	def accept
+		@friend_request_user = User.find(params[:id])
+		current_user.accept_request(@friend_request_user)
 	end
 
 	def reject

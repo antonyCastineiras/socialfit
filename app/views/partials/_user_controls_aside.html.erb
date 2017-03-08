@@ -39,9 +39,11 @@
 			<a href="" class="toggle-dropdown">View Friend Invites >></a>
 			<div id="friend-requests-list">
 				<% current_user.requested_friends.each do |user| %>
-					<p><%= user.email %></p>
-					<%= link_to "Accept Request", accept_friend_request_path, method: :post %>
-					<%= link_to "Reject Request", reject_friend_request_path, method: :post %>
+					<div id="invited-by-<%= user.id %>" class="friend-request">
+						<p><%= user.email %></p>
+						<%= link_to "Accept Request", accept_friend_request_path(user), method: :post, remote: true %>
+						<%= link_to "Reject Request", reject_friend_request_path(user), method: :post %>
+					</div>
 				<% end %>
 			</div>
 		</div>
