@@ -15,11 +15,13 @@ class InvitesController < ApplicationController
   def accept
   	@invite.accepted = true
   	@invite.save
+  	redirect_to :back
   end
 
   def reject
   	@invite.accepted = false
   	@invite.save
+  	redirect_to :back
   end
 
   private
