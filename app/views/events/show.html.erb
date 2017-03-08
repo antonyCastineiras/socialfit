@@ -2,3 +2,8 @@
 <p><%= @event.start_time.strftime("Starts at: %H:%M") %></p>
 <p>Info: <%= @event.info %></p>
 <p>Organized by: <%= @event.organizer.email %></p>
+
+<h4>Currently Attending</h4>
+<% @event.attending.each do |user| %>
+	<p><%= user.email %></p>
+<% end %>
