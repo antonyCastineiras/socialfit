@@ -24,5 +24,4 @@ Rails.application.routes.draw do
   post 'friendships/accept/:id' => 'friendships#accept', as: 'accept_friend_request'
   post 'friendships/reject/:id' => 'friendships#reject', as: 'reject_friend_request'
   delete 'friendships/remove/:id' => 'friendships#remove', as: 'remove_friendship'
-
 end 

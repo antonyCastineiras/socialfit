@@ -1,10 +1,10 @@
 class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_friend_request_user, only: [:accept, :reject, :remove]
+	before_action :set_friend_request_user, only: [:accept, :reject, :remove, :block, :unblock]
 
 	def index
-		user = User.find(params[:user_id])
-		@friends = user.friends
+		@user = User.find(params[:user_id])
+		@friends = @user.friends
 	end
 
 	def create
