@@ -1,0 +1,6 @@
+<% @friends.each do |friend| %>
+	<div id="friend-<%= friend.id %>" class="friend-container">
+		<p><%= friend.email %></p>
+		<%= link_to "Remove Friend", remove_friendship_path(friend), method: :delete, remote: true %>
+	</div>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   	sessions: 'sessions'
   }
 
+  get 'users/:user_id/friendships' => 'friendships#index', as: 'user_friendships'  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
   get 'pages/home' => 'pages#home', as: 'user_home'
@@ -21,5 +23,6 @@ Rails.application.routes.draw do
   post 'friendships' => 'friendships#create'
   post 'friendships/accept/:id' => 'friendships#accept', as: 'accept_friend_request'
   post 'friendships/reject/:id' => 'friendships#reject', as: 'reject_friend_request'
+  delete 'friendships/remove/:id' => 'friendships#remove', as: 'remove_friendship'
 
 end 

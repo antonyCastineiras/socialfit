@@ -57,6 +57,13 @@
 		<%= render partial: 'forms/add_friend_form' %>
 	</div>
 
+	<% if current_user %>
+		<h4>Your friends</h4>
+		<% current_user.friends.sample(6).each do |friend| %>
+			<p><%= friend.email %></p>
+		<% end %>
+		<%= link_to "See all your friends", user_friendships_path(current_user) %>
+	<% end %>
 
 
 </aside>
