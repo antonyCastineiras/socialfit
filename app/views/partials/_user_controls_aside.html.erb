@@ -1,69 +1,85 @@
 <aside id="controls" class="col-md-3">
-  <h4>Event Options</h4>
 	
-	<div class="dropdown">
-  	<a href="" class="toggle-dropdown">Create Event</a>
-		<%= render partial: 'forms/new_event_form' %>
-  </div>
-
-	<% if @event %>
-		<div class="dropdown">
-			<a href="" class="toggle-dropdown">Invite to event</a>
-			<%= render partial: 'forms/new_event_invite_form' %>
+	<% if current_user %>
+		<div class="panel panel-default">
+		  <div class="panel-heading">Signed in as <%= current_user.email %></div>		
 		</div>
 	<% end %>
 
-  <% if @event && @event.user == current_user %>
-  	<%= link_to "Delete Event", event_path(@event), method: :delete %>
-	<% end %>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  	<h4>Event Options</h4>
+	  </div>
+			<div class="panel-body">
+				<div class="dropdown">
+			  	<a href="" class="toggle-dropdown">Create Event</a>
+					<%= render partial: 'forms/new_event_form' %>
+			  </div>
 
-
-	<h4>Your Invites</h4>	
-	<% if current_user.invites.any? %>
-		<div class="dropdown">
-			<a href="" class="toggle-dropdown">View Event Invites >></a>
-			<div id="event-invites-list">
-				<% current_user.invites.each do |invite| %>
-					<p><%= invite.event.name %></p>
-					<%= link_to "Join Event", accept_invite_path(invite), method: :post %>
-					<%= link_to "Reject Invite", reject_invite_path(invite), method: :post %>
-				<% end %>
-			</div>
-		</div>
-	<% else %>
-		<p>currently no event invites</p>
-	<% end %>
-
-	<% if current_user.requested_friends.any? %>
-		<div class="dropdown">
-			<a href="" class="toggle-dropdown">View Friend Invites >></a>
-			<div id="friend-requests-list">
-				<% current_user.requested_friends.each do |user| %>
-					<div id="invited-by-<%= user.id %>" class="friend-request">
-						<p><%= user.email %></p>
-						<%= link_to "Accept Request", accept_friend_request_path(user), method: :post, remote: true %>
-						<%= link_to "Reject Request", reject_friend_request_path(user), method: :post, remote: true %>
+				<% if @event %>
+					<div class="dropdown">
+						<a href="" class="toggle-dropdown">Invite to event</a>
+						<%= render partial: 'forms/new_event_invite_form' %>
 					</div>
 				<% end %>
-			</div>
-		</div>
-	<% else %>
-		<p>currently no friend invites</p>
-	<% end %>
 
-	<h4>Friendship options</h4>
-	<div class="dropdown">
-		<a href="" class="toggle-dropdown">Add a friend</a>
-		<%= render partial: 'forms/add_friend_form' %>
+			  <% if @event && @event.user == current_user %>
+			  	<%= link_to "Delete Event", event_path(@event), method: :delete %>
+				<% end %>
+			</div>
 	</div>
 
-	<% if current_user %>
-		<h4>Your friends</h4>
-		<% current_user.friends.sample(6).each do |friend| %>
-			<p><%= friend.email %></p>
-		<% end %>
-		<%= link_to "See all your friends", user_friendships_path(current_user) %>
-	<% end %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Your Invites</h4>
+		</div>	
+		<div class="panel-body">
+			<% if current_user.invites.any? %>
+				<div class="dropdown">
+					<a href="" class="toggle-dropdown">View Event Invites >></a>
+					<div id="event-invites-list">
+						<% current_user.invites.each do |invite| %>
+							<p><%= invite.event.name %></p>
+							<%= link_to "Join Event", accept_invite_path(invite), method: :post %>
+							<%= link_to "Reject Invite", reject_invite_path(invite), method: :post %>
+						<% end %>
+					</div>
+				</div>
+			<% else %>
+				<p>currently no event invites</p>
+			<% end %>
 
-
+			<% if current_user.requested_friends.any? %>
+				<div class="dropdown">
+					<a href="" class="toggle-dropdown">View Friend Invites >></a>
+					<div id="friend-requests-list">
+						<% current_user.requested_friends.each do |user| %>
+							<div id="invited-by-<%= user.id %>" class="friend-request">
+								<p><%= user.email %></p>
+								<%= link_to "Accept Request", accept_friend_request_path(user), method: :post, remote: true %>
+								<%= link_to "Reject Request", reject_friend_request_path(user), method: :post, remote: true %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% else %>
+				<p>currently no friend invites</p>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Friendship options</h4>
+		</div>
+		<div class="panel-body">	
+			<div class="dropdown">
+				<a href="" class="toggle-dropdown">Add a friend</a>
+				<%= render partial: 'forms/add_friend_form' %>
+			</div>
+			<% if current_user %>
+				<%= link_to "See all your friends", user_friendships_path(current_user) %>
+			<% end %>
+		</div>
+	</div>
 </aside>
