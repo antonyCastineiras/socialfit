@@ -21,8 +21,8 @@
 	<h4>Your Invites</h4>	
 	<% if current_user.invites.any? %>
 		<div class="dropdown">
-			<a href="" class="toggle-dropdown">View >></a>
-			<div id="user-invites-list">
+			<a href="" class="toggle-dropdown">View Event Invites >></a>
+			<div id="event-invites-list">
 				<% current_user.invites.each do |invite| %>
 					<p><%= invite.event.name %></p>
 					<%= link_to "Join Event", accept_invite_path(invite), method: :post %>
@@ -33,6 +33,27 @@
 	<% else %>
 		<p>currently no event invites</p>
 	<% end %>
+
+	<% if current_user.requested_friends.any? %>
+		<div class="dropdown">
+			<a href="" class="toggle-dropdown">View Friend Invites >></a>
+			<div id="friend-requests-list">
+				<% current_user.requested_friends.each do |user| %>
+					<p><%= user.email %></p>
+					<%= link_to "Accept Request", accept_friend_request_path, method: :post %>
+					<%= link_to "Reject Request", reject_friend_request_path, method: :post %>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<p>currently no friend invites</p>
+	<% end %>
+
+	<h4>Friendship options</h4>
+	<div class="dropdown">
+		<a href="" class="toggle-dropdown">Add a friend</a>
+		<%= render partial: 'forms/add_friend_form' %>
+	</div>
 
 
 

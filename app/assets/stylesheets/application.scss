@@ -36,6 +36,6 @@ header .container-fluid {
 }
 
 // elements to be hidden
-#user-invites-list, .invite-to-event-form {
+#event-invites-list, .invite-to-event-form, .add-friend-form, #friend-requests-list {
 	display: none;
 }

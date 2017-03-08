@@ -1,0 +1,10 @@
+<%= form_tag friendships_path, method: :post, remote: true, class: 'add-friend-form' do %>
+	<div class="form-group">
+		<%= label_tag "Friends Email: ", :email %>
+		<%= text_field_tag :email, nil, html: {class: 'formm-control'} %>
+	</div>
+
+	<div class="actions">
+		<%= submit_tag "Add Friend", class: 'btn btn-primary' %>
+	</div>
+<% end %>
