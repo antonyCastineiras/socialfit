@@ -30,6 +30,6 @@ class EventsController < ApplicationController
 	end
 
 	def new_event_params
-		params.permit(:name,:info,:start_time)
+		params.permit(:name,:info,:start_time,:postcode)
 	end
 end

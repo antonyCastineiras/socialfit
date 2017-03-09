@@ -24,7 +24,7 @@
 
 	function getPosition(callback) {
 		var geocoder = new google.maps.Geocoder();
-		var postcode = 'lo26 2yp';
+		var postcode = "<%= @event.postcode %>";
 
 		geocoder.geocode({'address': postcode}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
