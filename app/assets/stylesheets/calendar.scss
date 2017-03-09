@@ -2,5 +2,8 @@
 
 	.day {
 		height: 80px;
+		width: calc(100% / 7);
+		max-width: calc(100% / 7);
+		word-break: break-all;
 	}
 }
