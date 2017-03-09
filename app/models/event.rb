@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :invites
+  has_many :invites, dependent: :destroy
 
   def organizer
   	user
