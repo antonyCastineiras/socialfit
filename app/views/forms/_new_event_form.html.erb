@@ -5,13 +5,18 @@
 	</div>
 
 	<div class="form-group">
-		<%= label_tag :info %>
+		<%= label_tag :info, "Info: " %>
 		<%= text_area_tag :info, nil, class: "form-control" %>
 	</div>
 
 	<div class="form-group">
-		<%= label_tag :start_time %>
+		<%= label_tag :start_time, "Start time: " %>
 		<%= datetime_local_field_tag :start_time, nil, class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag :postcode, "Postcode: " %>
+		<%= text_field_tag :postcode, nil, class: 'form-control' %> 
 	</div>
 
 	<div class="actions">
