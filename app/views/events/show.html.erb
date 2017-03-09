@@ -7,3 +7,18 @@
 <% @event.attending.each do |user| %>
 	<p><%= user.email %></p>
 <% end %>
+
+<div id="map" style="width: 570px; height: 380px"></div>
+<script src = "https://maps.googleapis.com/maps/api/js"></script>
+<script>
+	$(document).on('turbolinks:load', loadMap);
+
+	function loadMap() {
+		var mapOptions = {
+			center: new google.maps.LatLng(20.59384, 78.96288), zoom: 13,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		var map = new google.maps.Map(document.getElementById('map'), mapOptions)
+	}
+</script>
