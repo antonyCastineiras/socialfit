@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 		@events = current_user.recommended_events if params[:requested_events] == 'recommended'
 		@events = current_user.events_of_friends if params[:requested_events] == 'friends' 	
 		@events = current_user.events if params[:requested_events] == 'own'
+		@events = current_user.all_calendar_events if params[:requested_events] == 'all'
 	end
 
 	private

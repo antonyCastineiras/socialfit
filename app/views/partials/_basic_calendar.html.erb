@@ -6,6 +6,7 @@
 		</div>
 	<% end %>
 <% end %>
-<%= link_to "Display friends events", update_calendar_events_path(requested_events: 'friends'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
+<%= link_to "Display all events", update_calendar_events_path(requested_events: 'all'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
 <%= link_to "Display your events", update_calendar_events_path(requested_events: 'own'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
+<%= link_to "Display friends events", update_calendar_events_path(requested_events: 'friends'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
 <%= link_to "Display recommended events", update_calendar_events_path(requested_events: 'recommended'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
