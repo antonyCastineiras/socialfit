@@ -10,4 +10,12 @@ class User < ApplicationRecord
 
   has_many :attending_events, -> { where "accepted = true"}, through: :invites, source: :event
 
+  def events_of_friends
+  	all_friends = []
+  	self.friends.each {|f|
+  		f.events.where("open = true").each {|e| all_friends << e}
+  	}
+  	all_friends
+  end
+
 end

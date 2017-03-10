@@ -2,3 +2,4 @@
 	<%= render partial: 'partials/basic_calendar' %>
 </div>
 <%= link_to "Display all events", update_calendar_events_path(requested_events: 'all'), class: 'btn btn-primary update-calendar-btn', remote: true %> 
+<%= link_to "Display friends events", update_calendar_events_path(requested_events: 'friends'), class: 'btn btn-primary update-calendar-btn', remote: true %> 

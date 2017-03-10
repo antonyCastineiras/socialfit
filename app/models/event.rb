@@ -13,4 +13,6 @@ class Event < ApplicationRecord
   def open_to_s
   	open ? 'open' : 'closed'
   end
+
+  
 end
