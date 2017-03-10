@@ -5,6 +5,6 @@ class PagesController < ApplicationController
 
   def home
   	@user = current_user
-  	@events = @user.events
+  	@events = @user.all_calendar_events
   end
 end

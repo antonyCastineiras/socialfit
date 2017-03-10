@@ -8,9 +8,11 @@
 
 	<div class="panel panel-default">
 	  <div class="panel-heading">
-	  	<h4>Event Options</h4>
+	  		<h4 class="panel-title">
+	  			<a data-toggle="collapse" href="#event-options">Event Options</a>
+	  		</h4>
 	  </div>
-			<div class="panel-body">
+			<div id="event-options" class="panel-body panel-collapse collapse">
 				<div class="dropdown">
 			  	<a href="" class="toggle-dropdown">Create Event</a>
 					<%= render partial: 'forms/new_event_form' %>
@@ -31,9 +33,11 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h4>Your Invites</h4>
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="#your-invites">Your Invites</a>
+			</h4>
 		</div>	
-		<div class="panel-body">
+		<div id="your-invites" class="panel-body panel-collapse collapse">
 			<% if current_user.invites.any? %>
 				<div class="dropdown">
 					<a href="" class="toggle-dropdown">View Event Invites >></a>
@@ -70,9 +74,11 @@
 	
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h4>Friendship options</h4>
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="#friendship-options">Friendship options</a>
+			</h4>
 		</div>
-		<div class="panel-body">	
+		<div id="friendship-options" class="panel-body panel-collapse collapse">	
 			<div class="dropdown">
 				<a href="" class="toggle-dropdown">Add a friend</a>
 				<%= render partial: 'forms/add_friend_form' %>
