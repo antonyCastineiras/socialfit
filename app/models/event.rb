@@ -14,5 +14,16 @@ class Event < ApplicationRecord
   	open ? 'open' : 'closed'
   end
 
-  
+  def self.requested_calendar_events(requested_events,user)
+  	case requested_events
+  	when 'all'
+  		return user.all_calendar_events
+  	when 'friends'
+  		return user.events_of_friends
+  	when 'own'
+  		return user.events
+  	when 'recommended'
+  		return user.recommended_events
+  	end
+  end	
 end
