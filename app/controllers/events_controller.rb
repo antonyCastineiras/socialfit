@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 	end
 
 	def update_calendar
-		@events = Event.first(2) if params[:requested_events] == 'all'
+		@events = Event.all if params[:requested_events] == 'all'
 		@events = current_user.events_of_friends if params[:requested_events] == 'friends' 	
 	end
 
