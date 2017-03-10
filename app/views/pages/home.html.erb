@@ -1,8 +1,4 @@
-<%= month_calendar events: @events do |date,events| %>
-	<%= date.day %>
-	<% events.each do |event| %>
-		<div class="calendar-event">
-			<%= link_to event.name, event_path(event) %>
-		</div>
-	<% end %>
-<% end %>
+<div id="calendar_container">
+	<%= render partial: 'partials/basic_calendar' %>
+</div>
+<%= link_to "Display all events", update_calendar_events_path(requested_events: 'all'), class: 'btn btn-primary update-calendar-btn', remote: true %> 

@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
-	before_action :set_event, only: [:show]
+	
 
 	def new
 	end
 
 	def show
+		@event = Event.find(params[:id])
 	end
 
 	def create	
@@ -23,13 +24,13 @@ class EventsController < ApplicationController
 		redirect_to user_home_path
 	end
 
-	private
-
-	def set_event
-		@event = Event.find(params[:id])
+	def update_calendar
+		@events = Event.first(2) if params[:requested_events] == 'all' 	
 	end
 
+	private
+
 	def new_event_params
-		params.permit(:name,:info,:start_time,:postcode,:open)
+		params.permit(:name,:info,:start_time,:postcode,:open,:requested_events)
 	end
 end

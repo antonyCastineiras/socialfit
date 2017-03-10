@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pages/home' => 'pages#home', as: 'user_home'
 
   resources :events
+  get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'
   resources :invites, only: [:create]
 
   post 'invites/:id/accept' => 'invites#accept', as: 'accept_invite'
