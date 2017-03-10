@@ -18,4 +18,8 @@ class User < ApplicationRecord
   	all_friends
   end
 
+  def recommended_events
+  	Event.where("open = true").sample(4)
+  end
+
 end
