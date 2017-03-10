@@ -7,17 +7,15 @@
 <% @event.attending.each do |user| %>
 	<p><%= user.email %></p>
 <% end %>
-
 <div id="map" style="width: 570px; height: 380px"></div>
 <script>
 	$(document).on('turbolinks:load', function() {
 		var lat = 10;
 		var lng = 10;
-		var position = {lng: 10, lat: 10}
 		getPosition(function(pos) {
-			position.lng = pos.long
-			position.lat = pos.latt	
-			loadMap(position.lat, position.lng);
+			lng = pos.long
+			lat = pos.latt	
+			loadMap(lat, lng);
 		});
 	});
 
