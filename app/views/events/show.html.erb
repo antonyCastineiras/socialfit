@@ -9,7 +9,6 @@
 <% end %>
 
 <div id="map" style="width: 570px; height: 380px"></div>
-<script src = "https://maps.googleapis.com/maps/api/js?key=<%= escape_javascript(Rails.application.secrets.google_maps_api_key) %>"></script>
 <script>
 	$(document).on('turbolinks:load', function() {
 		var lat = 10;
@@ -17,7 +16,7 @@
 		var position = {lng: 10, lat: 10}
 		getPosition(function(pos) {
 			position.lng = pos.long
-			position.lat = pos.latt
+			position.lat = pos.latt	
 			loadMap(position.lat, position.lng);
 		});
 	});
@@ -38,7 +37,7 @@
 
 	function loadMap(lat,lng) {
 		var mapOptions = {
-			center: new google.maps.LatLng(lat, lng), zoom: 14,
+			center: new google.maps.LatLng(lat, lng), zoom: 16,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
