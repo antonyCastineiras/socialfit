@@ -11,28 +11,8 @@
 <div id="map" style="width: 570px; height: 380px"></div>
 <script>
 	$(document).on('turbolinks:load', function() {
-		var lat = 10;
-		var lng = 10;
-		getPosition(function(pos) {
-			lng = pos.long
-			lat = pos.latt	
-			loadMap(lat, lng);
-		});
+		loadMap(<%= @event.latitude %>, <%= @event.longitude %>);
 	});
-
-	function getPosition(callback) {
-		var geocoder = new google.maps.Geocoder();
-		var postcode = "<%= @event.postcode %>";
-
-		geocoder.geocode({'address': postcode}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				callback({
-					latt: results[0].geometry.location.lat(),
-					long: results[0].geometry.location.lng()
-				});
-			}
-		});
-	}
 
 	function loadMap(lat,lng) {
 		var mapOptions = {

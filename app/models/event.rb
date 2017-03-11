@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :invites, dependent: :destroy
+  geocoded_by :postcode
+  after_validation :geocode 
 
   def organizer
   	user
