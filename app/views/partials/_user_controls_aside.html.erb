@@ -40,11 +40,11 @@
 			</h4>
 		</div>	
 		<div id="your-invites" class="panel-body panel-collapse collapse">
-			<% if current_user.invites.any? %>
+			<% if current_user.pending_invites.any? %>
 				<div class="dropdown">
 					<a href="" class="toggle-dropdown">View Event Invites >></a>
 					<div id="event-invites-list">
-						<% current_user.invites.each do |invite| %>
+						<% current_user.pending_invites.each do |invite| %>
 							<p><%= invite.event.name %></p>
 							<%= link_to "Join Event", accept_invite_path(invite), method: :post %>
 							<%= link_to "Reject Invite", reject_invite_path(invite), method: :post %>

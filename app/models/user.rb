@@ -9,9 +9,15 @@ class User < ApplicationRecord
   has_friendship
 
   has_many :events
-  has_many :invites, -> { where "accepted = false"}
+  has_many :invites
 
-  has_many :attending_events, -> { where "accepted = true"}, through: :invites, source: :event
+  def pending_invites
+    invites.where("accepted = false")
+  end
+
+  def attending_events
+    invites.where("accepted  = true").collect {|i| i.event }
+  end
 
   def events_of_friends
   	all_friends = []
@@ -22,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def all_calendar_events
-  	self.events + events_of_friends
+  	self.events + events_of_friends + attending_events
   end
 
   def recommended_events

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 		event = Event.new(new_event_params)
 		event.user = current_user
 		if event.save
-			redirect_to user_home_path
+			redirect_to user_events_path
 		else
 			flash[:notice] = "unable to create event"
 		end
