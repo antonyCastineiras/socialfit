@@ -18,6 +18,8 @@
 					<%= render partial: 'forms/new_event_form' %>
 			  </div>
 
+			  <%= link_to "Your Events", user_events_path(current_user) %>
+
 				<% if @event && (@event.open || @event.user == current_user) %>
 					<div class="dropdown">
 						<a href="" class="toggle-dropdown">Invite to event</a>

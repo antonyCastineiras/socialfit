@@ -1,0 +1,9 @@
+<h3>Your events</h3>
+<% @user.events.each do |event| %>
+	<%= link_to event.name, event_path(event) %><br>
+<% end %>
+
+<h3>Events you've signed up to</h3>
+<% @user.attending_events.each do |event| %>
+	<%= link_to event.name, event_path(event) %><br>
+<% end %>

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   	sessions: 'sessions'
   }
 
-  get 'users/:user_id/friendships' => 'friendships#index', as: 'user_friendships'  
+  get 'users/:user_id/friendships' => 'friendships#index', as: 'user_friendships' 
+  get 'users/:user_id/events' => 'events#index', as: 'user_events' 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
