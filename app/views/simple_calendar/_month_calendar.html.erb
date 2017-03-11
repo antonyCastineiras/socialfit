@@ -27,8 +27,15 @@
     </tbody>
   </table>
 
+  <div class="pull-left">
+    <%= link_to "Display all events", user_events_path(requested_events: 'all', start_date: calendar.send(:start_date) ), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'all'}"%> 
+    <%= link_to "Display your events", user_events_path(requested_events: 'own', start_date: calendar.send(:start_date) ), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'own'}" %> 
+    <%= link_to "Display friends events", user_events_path(requested_events: 'friends', start_date: calendar.send(:start_date)), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'friends'} " %> 
+    <%= link_to "Display recommended events", user_events_path(requested_events: 'recommended', start_date: calendar.send(:start_date)), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'recommended'}" %>
+  </div>
+
   <div class="calendar-heading pull-right">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'calendar-previous-link' %>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'calendar-next-link' %>
   </div>
 </div>

@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
 	
 	def index
-		@user = User.find(params[:user_id])
-		@events = @user.events
+		@events = current_user.requested_calendar_events(params[:requested_events])
 	end
 
 	def new
@@ -26,10 +25,6 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		@event.destroy
 		redirect_to user_home_path
-	end
-
-	def update_calendar
-		@events = Event.requested_calendar_events(params[:requested_events], current_user)
 	end
 
 	private

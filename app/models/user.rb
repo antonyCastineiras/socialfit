@@ -26,4 +26,19 @@ class User < ApplicationRecord
   	Event.where("open = true").sample(4)
   end
 
+  def requested_calendar_events(requested_events)
+    case requested_events
+    when nil
+      return all_calendar_events
+    when 'all'
+      return all_calendar_events
+    when 'friends'
+      return events_of_friends
+    when 'own'
+      return events
+    when 'recommended'
+      return recommended_events
+    end
+  end 
+
 end

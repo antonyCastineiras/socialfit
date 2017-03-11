@@ -1,2 +1,11 @@
+calendarNextLinkHref = $('.calendar-next-link').attr('href');
+calendarPreviousLinkHref = $('.calendar-previous-link').attr('href');
 $('.update-calendar-btn').remove();
-$('.simple-calendar').html('<%= escape_javascript( render partial: "partials/basic_calendar") %>'); 
+$('.simple-calendar').html('<%= escape_javascript( render partial: "events/calendar") %>'); 
+// simple calnedar sets next link href to the route for last controller action
+// so it must be reset to its original value
+$('.calendar-next-link').attr('href', calendarNextLinkHref);
+$('.calendar-previous-link').attr('href', calendarPreviousLinkHref);
+
+nextStartDate(calendarNextLinkHref);
+
