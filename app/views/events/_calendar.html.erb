@@ -6,3 +6,17 @@
 		</div>
 	<% end %>
 <% end %>
+<script>
+	$('a.calendar-next-link, .calendar-previous-link').on('click', function(event) {
+			event.preventDefault();
+			$.ajax({
+				type: 'get',
+				url: 'events',
+				data: paramsFromHref($(this).attr('href')),
+				dataType: 'script',
+				success: function(data) {
+					console.log(data);
+				}
+			});
+		});
+</script>
