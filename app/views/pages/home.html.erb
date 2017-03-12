@@ -2,13 +2,11 @@
 <h2>Nearby Events</h2>
 <div class="nearby-events-container">
 	<% if @user.nearby_events.any? %>
-		<% @user.nearby_events(50).each do |event| %>
-			<p><%= event.name %></p>
-			<p>Distance: <%= event.distance_from(current_user).round %></p>
-		<% end %>
+		<%= render partial: 'partials/events_list', locals: {events: @user.nearby_events(55).first(5)} %>
+		<%= link_to "See all #{@user.nearby_events(55).count(:all)} nearby events", user_events_path(requested_events: 'nearby') %>
 	<% else %>
 		<p>Currently no nearby events. (Make sure you've added your postcode to your account details)</p>
-		<p>Would you like to create one? <%= link_to "Create new Event", new_event_path %></p>
+		<p>Be the first to create one <%= link_to "Create new Event", new_event_path %></p>
 	<% end %>
 </div>
 

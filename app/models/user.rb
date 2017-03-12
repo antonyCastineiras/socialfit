@@ -41,6 +41,8 @@ class User < ApplicationRecord
     case requested_events
     when nil
       return all_calendar_events
+    when 'nearby'
+      return nearby_events
     when 'all'
       return all_calendar_events
     when 'friends'
@@ -53,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def nearby_events(radius=5)
-    Event.near([latitude,longitude], radius)
+    Event.near([latitude,longitude], radius).where("open = true")
   end 
 
 end

@@ -6,4 +6,11 @@
 		max-width: calc(100% / 7);
 		word-break: break-all;
 	}
+
+	.calendar-options {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
 }
+
