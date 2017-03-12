@@ -1,6 +1,8 @@
 <div class="event">
 	<%= link_to event.name, event_path(event) %>
 	<p><strong>Organized by:</strong> <%= event.organizer.username %></p>
-	<p><strong>Distance from you:</strong> Distance: <%= event.distance_from(current_user).round %></p>	
+	<% if user.geocoded? %>
+		<p><strong>Distance from you:</strong> Distance: <%= event.distance_from(current_user).round %></p>
+	<% end %>	
 </div>
 <br />
