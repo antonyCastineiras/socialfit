@@ -1,7 +1,15 @@
 <h1><%= @user.username %></h1>
 <h2>Nearby Events</h2>
-<% @user.nearby_events(55).each do |event| %>
-	<p><%= event.name %></p>
-	<p>Distance: <%= event.distance_from(current_user).round %></p>
-<% end %>
+<div class="nearby-events-container">
+	<% if @user.nearby_events.any? %>
+		<% @user.nearby_events(50).each do |event| %>
+			<p><%= event.name %></p>
+			<p>Distance: <%= event.distance_from(current_user).round %></p>
+		<% end %>
+	<% else %>
+		<p>Currently no nearby events. (Make sure you've added your postcode to your account details)</p>
+		<p>Would you like to create one? <%= link_to "Create new Event", new_event_path %></p>
+	<% end %>
+</div>
+
 
