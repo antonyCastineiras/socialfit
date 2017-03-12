@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_friendship
+  geocoded_by :postcode
+  after_validation :geocode
 
   has_many :events
   has_many :invites
@@ -48,6 +50,10 @@ class User < ApplicationRecord
     when 'recommended'
       return recommended_events
     end
+  end
+
+  def nearby_events(radius=5)
+    Event.near([latitude,longitude], radius)
   end 
 
 end
