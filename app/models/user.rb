@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def all_calendar_events
-  	self.events + events_of_friends + attending_events
+  	(self.events + events_of_friends + attending_events).uniq
   end
 
   def recommended_events
