@@ -6,7 +6,9 @@ class InvitesController < ApplicationController
 		@invite.event = Event.find(params[:event_id])
 		@invite.user = User.find_by_email(params[:email])
 		@invite.accepted = false
-		if !@invite.save
+		if @invite.save
+      Notification.create(user: @invite.user, content: "#{current_user.username} invited you to the group #{@invite.event.name}")
+    else
 			flash[:notice] = "Unable to invite"
 		end
 		redirect_to :back
