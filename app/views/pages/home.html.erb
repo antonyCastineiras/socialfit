@@ -1,13 +1,22 @@
-<h1><%= @user.username %></h1>
-<h2>Nearby Events</h2>
-<div class="nearby-events-container">
-	<% if @user.nearby_events.any? %>
-		<%= render partial: 'partials/events_list', locals: {events: @user.nearby_events(55).first(5)} %>
-		<%= link_to "See all #{@user.nearby_events(55).count(:all)} nearby events", user_events_path(requested_events: 'nearby') %>
-	<% else %>
-		<p>Currently no nearby events. (Make sure you've added your postcode to your account details)</p>
-		<p>Be the first to create one <%= link_to "Create new Event", new_event_path %></p>
-	<% end %>
+<nav>
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="active" onclick="toggleClass(this);">
+			<%= link_to "Your feed", get_page_path(page: 'feed'), id: 'feed-link', class: 'page-link', remote: true %>
+		</li>
+		<li role="presentation" onclick="toggleClass(this);">
+			<%= link_to "Schedule", get_page_path(page: 'schedule'), id: 'schedule-link', class: 'page-link', remote: true %>
+		</li>
+		<li role="presentation" onclick="toggleClass(this);"">
+			<%= link_to "Friends", get_page_path(page: 'friends'), id: 'friends-link', class: 'page-link', remote: true %>
+		</li>
+		<li role="presentation" onclick="toggleClass(this);">
+			<%= link_to "Events", get_page_path(page: 'events'), id: 'events-link', class: 'page-link', remote: true %>
+		</li>
+	</ul>
+</nav>
+
+<div id="page-container">
+	<%= render partial: 'pages/feed' %>
 </div>
 
-
+	

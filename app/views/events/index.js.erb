@@ -1,2 +1,2 @@
 $('#calendar-container').html('<%= escape_javascript(render partial: "events/calendar", locals: {events: @events}) %>');
-$('.events-list').html('<%= escape_javascript( render partial: "partials/events_list", locals: {events: @events}) %>')
+$('#current-events-list').html('<%= escape_javascript( render partial: "partials/events_list", locals: {events: @events}) %>')

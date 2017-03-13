@@ -1,7 +1,7 @@
 <%= form_tag friendships_path, method: :post, remote: true, class: 'add-friend-form form' do %>
 	<div class="form-group">
-		<%= label_tag "Friends Email: ", :email %>
-		<%= text_field_tag :email, nil, class: 'form-control' %>
+		<%= label_tag :email %>
+		<%= text_field_tag :email, nil, class: 'form-control', placeholder: 'enter your friends email here to send them a friend request' %>
 	</div>
 
 	<div class="actions">

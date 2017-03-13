@@ -1,0 +1,5 @@
+<h1>friends</h1>
+<%= render partial: 'forms/add_friend_form.html.erb' %>
+<% if current_user %>
+	<%= link_to "See all your friends", user_friendships_path(current_user) %>
+<% end %>

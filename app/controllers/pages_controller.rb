@@ -5,6 +5,11 @@ class PagesController < ApplicationController
 
   def home
   	@user = current_user
-  	@events = @user.all_calendar_events
+  	@events = @user.requested_calendar_events('all')
+  end
+
+  def get_page
+  	@events = current_user.events
+  	@page_name = params[:page]
   end
 end

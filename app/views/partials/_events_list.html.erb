@@ -1,4 +1,4 @@
-<ul class="events-list list-group">
+<ul id="current-events-list" class="events-list list-group">
 	<% events.each do |event| %>
 		<li class="list-group-item">
 			<%= render partial: 'partials/event', locals: {event: event, user: @user} %>
