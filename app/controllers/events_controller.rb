@@ -15,6 +15,8 @@ class EventsController < ApplicationController
 		event = Event.new(new_event_params)
 		event.user = current_user
 		if event.save
+			Notification.create(user: current_user, content: "You created the event #{event.name}")
+			notify_friends(current_user.friends, "#{current_user.username} created the event #{event.name}")
 			redirect_to user_events_path
 		else
 			flash[:notice] = "unable to create event"
@@ -23,6 +25,8 @@ class EventsController < ApplicationController
 
 	def destroy
 		@event = Event.find(params[:id])
+		Notification.create(user: current_user, content: "You deleted the event #{@event.name}")
+		notify_friends(@event.attending, "#{@event.organizer.username} cancelled the event that you were attending: #{@event.name}")
 		@event.destroy
 		redirect_to user_home_path
 	end

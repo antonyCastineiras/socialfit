@@ -1,1 +1,8 @@
 <h1>feed</h1>
+<ul class="list-group">
+	<% current_user.notifications.each do |notification| %>
+		<li class="list-group-item">
+			<p><%= notification.content %></p>
+		</li>
+	<% end %>
+</ul>

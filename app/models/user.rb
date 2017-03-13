@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :invites
+  has_many :notifications
 
   def pending_invites
     invites.where("accepted = false")
