@@ -1,0 +1,22 @@
+<h1>Invites</h1>
+<h2>Event Invites</h2>
+<% if current_user.pending_invites.any? %>
+	<%= render partial: 'partials/events_list', locals: {events: current_user.pending_invites.collect {|i| i.event}} %>
+<% else %>
+	<p>You currently have no group invites</p>
+<% end %>
+
+<h2>Friend Requests</h2>
+<% if current_user.requested_friends.any? %>
+	<ul class="friend-requests-list list-group">
+		<% current_user.requested_friends.each do |friend| %>
+			<li id="invited-by-<%= friend.id %>" class="list-group-item">
+				<p><%= friend.username %></p>
+				<%= link_to "Accept Request", accept_friend_request_path(friend), method: :post, remote: true %>
+				<%= link_to "Reject Request", reject_friend_request_path(friend), method: :post, remote: true %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>You currently have no friend requests</p>
+<% end %>

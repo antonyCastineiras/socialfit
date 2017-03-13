@@ -1,22 +1,25 @@
 <nav>
 	<ul class="nav nav-tabs">
-		<li role="presentation" class="active" onclick="toggleClass(this);">
-			<%= link_to "Your feed", get_page_path(page: 'feed'), id: 'feed-link', class: 'page-link', remote: true %>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'feed' %>" onclick="toggleClass(this);">
+			<%= link_to "Your feed", user_home_path(page: 'feed'), id: 'feed-link', class: 'page-link', remote: true %>
 		</li>
-		<li role="presentation" onclick="toggleClass(this);">
-			<%= link_to "Schedule", get_page_path(page: 'schedule'), id: 'schedule-link', class: 'page-link', remote: true %>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'schedule' %>" onclick="toggleClass(this);">
+			<%= link_to "Schedule", user_home_path(page: 'schedule'), id: 'schedule-link', class: 'page-link', remote: true %>
 		</li>
-		<li role="presentation" onclick="toggleClass(this);"">
-			<%= link_to "Friends", get_page_path(page: 'friends'), id: 'friends-link', class: 'page-link', remote: true %>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'friends' %>" onclick="toggleClass(this);"">
+			<%= link_to "Friends", user_home_path(page: 'friends'), id: 'friends-link', class: 'page-link', remote: true %>
 		</li>
-		<li role="presentation" onclick="toggleClass(this);">
-			<%= link_to "Events", get_page_path(page: 'events'), id: 'events-link', class: 'page-link', remote: true %>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'events' %>" onclick="toggleClass(this);">
+			<%= link_to "Events", user_home_path(page: 'events'), id: 'events-link', class: 'page-link', remote: true %>
+		</li>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'invites' %>" onclick="toggleClass(this);">
+			<%= link_to "Invites", user_home_path(page: 'invites'), id: 'invites-link', class: 'page-link', remote: true %>
 		</li>
 	</ul>
 </nav>
 
 <div id="page-container">
-	<%= render partial: 'pages/feed' %>
+	<%= render partial: "#{@page_name}" %>
 </div>
 
 	

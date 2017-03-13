@@ -4,12 +4,17 @@ class PagesController < ApplicationController
   end
 
   def home
+  	set_page_name
   	@user = current_user
   	@events = @user.requested_calendar_events('all')
   end
 
-  def get_page
-  	@events = current_user.events
-  	@page_name = params[:page]
+  private
+
+  def set_page_name
+  	session[:current_page] = params[:page] || session[:current_page] || 'feed'
+  	@page_name = session[:current_page]
   end
 end
+
+

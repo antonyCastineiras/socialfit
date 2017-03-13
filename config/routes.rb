@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
   get 'pages/home' => 'pages#home', as: 'user_home'
-  get 'pages/get_page' => 'pages#get_page', as: 'get_page'
   
   resources :events
   get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'
