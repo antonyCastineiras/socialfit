@@ -3,6 +3,7 @@
 	<p><strong>Organized by:</strong> <%= event.organizer.username %></p>
 	<% if current_user.geocoded? %>
 		<p><strong>Distance from you:</strong> Distance: <%= event.distance_from(current_user).round %></p>
-	<% end %>	
+	<% end %>
+	<p><strong>open: </strong><%= event.open_to_s %></p>
 </div>
 <br />

@@ -1,6 +1,6 @@
 <ul id="current-events-list" class="events-list list-group">
 	<% events.each do |event| %>
-		<li class="list-group-item">
+		<li class="list-group-item" id="<%= event.id %>" >
 			<%= render partial: 'partials/event', locals: {event: event, user: @user} %>
 		</li>
 	<% end %>

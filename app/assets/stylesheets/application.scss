@@ -20,8 +20,8 @@
 @import "calendar";
 @import "typography";
 
-header .container-fluid {
-	width: 50%;	
+.container-fluid {
+	width: 67%;	
 }
 
 #home-page-forms-container form {
@@ -37,6 +37,3 @@ header .container-fluid {
 }
 
 // elements to be hidden
-#event-invites-list, .invite-to-event-form,  #friend-requests-list {
-	display: none;
-}

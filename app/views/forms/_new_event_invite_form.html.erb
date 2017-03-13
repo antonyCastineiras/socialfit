@@ -2,7 +2,7 @@
 	<%= hidden_field_tag :event_id, @event.id %>
 	<div class="form-group">
 		<%= label_tag :email %>
-		<%= text_field_tag :email, placeholder: "enter their email here", class: 'form-control' %>
+		<%= text_field_tag :email, nil, placeholder: "enter the email of the person you would like to invite", class: 'form-control' %>
 	</div>
 
 	<div class="actions">

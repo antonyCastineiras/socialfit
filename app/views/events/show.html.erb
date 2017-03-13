@@ -8,6 +8,12 @@
 <% @event.attending.each do |user| %>
 	<p><%= user.username %></p>
 <% end %>
+<% if @event.open || @event.organizer == current_user %>
+	<%= render partial: 'forms/new_event_invite_form' %>
+<% end %>
+<% if @event.user == current_user %>
+	<%= link_to "Delete Event", event_path(@event), method: :delete %>
+<% end %>
 <div id="map" style="width: 570px; height: 380px"></div>
 <script>
 	$(document).on('turbolinks:load', function() {

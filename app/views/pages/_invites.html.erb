@@ -1,7 +1,15 @@
 <h1>Invites</h1>
 <h2>Event Invites</h2>
 <% if current_user.pending_invites.any? %>
-	<%= render partial: 'partials/events_list', locals: {events: current_user.pending_invites.collect {|i| i.event}} %>
+	<ul class="list-group">
+		<% current_user.pending_invites.each do |invite| %>
+			<li class="list-group-item" id="invite-<%= invite.id %>">
+				<%= render partial: 'partials/event', locals: {event: invite.event} %>
+				<%= link_to "Join Event", accept_invite_path(invite), method: :post, remote: true  %>
+				<%= link_to "Reject Invite", reject_invite_path(invite), method: :post, remote: true %>
+			</li>
+		<% end %>
+	</ul>
 <% else %>
 	<p>You currently have no group invites</p>
 <% end %>
