@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
 		requested_friend = User.where("email = '#{params[:email]}'").first
 		if !requested_friend.nil?
 		  current_user.friend_request(requested_friend)
+		  Notification.create(user: requested_friend, content: " #{current_user.username} sent you a friend request")
 		else
 			flash[:notice] = "Could not find the friend you were looking for. Please check their email is spelled correctly."
 		end
@@ -18,6 +19,7 @@ class FriendshipsController < ApplicationController
 
 	def accept
 		current_user.accept_request(@friend_request_user)
+		Notification.create(user: @friend_request_user, content: "#{current_user.username} accepted your friend request")
 	end
 
 	def reject
