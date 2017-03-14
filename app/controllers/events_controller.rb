@@ -31,6 +31,13 @@ class EventsController < ApplicationController
 		redirect_to user_home_path
 	end
 
+	def join
+		@event = Event.find(params[:id])
+		@invite = Invite.create(user: current_user, event: @event, accepted: true )
+		Notification.create(user: current_user, content: "You signed up for #{@event.name}" )
+		Notification.create(user: @event.organizer, content: "#{current_user.username} joined your event #{@event.name}")
+	end
+
 	private
 
 	def new_event_params

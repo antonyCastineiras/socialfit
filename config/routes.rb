@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'pages/home' => 'pages#home', as: 'user_home'
   
   resources :events
+  get 'events/join/:id' => 'events#join', as: 'join_event'
   get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'
   resources :invites, only: [:create]
 

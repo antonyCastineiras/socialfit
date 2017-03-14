@@ -8,6 +8,9 @@
 <% @event.attending.each do |user| %>
 	<p><%= user.username %></p>
 <% end %>
+<% if @event.open && @event.organizer != current_user %>
+	<%= link_to "Join group", join_event_path(@event), remote: true %>
+<% end %>
 <% if @event.open || @event.organizer == current_user %>
 	<%= render partial: 'forms/new_event_invite_form' %>
 <% end %>
