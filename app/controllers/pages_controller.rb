@@ -12,8 +12,10 @@ class PagesController < ApplicationController
   private
 
   def set_page_name
+    original_value = session[:current_page]
   	session[:current_page] = params[:page] || session[:current_page] || 'feed'
   	@page_name = session[:current_page]
+    session[:current_page] == original_value ? params[:page_updated] = false : params[:page_updated] = true
   end
 end
 

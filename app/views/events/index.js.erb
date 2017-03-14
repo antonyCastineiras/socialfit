@@ -1,6 +1,7 @@
 nextLinkHref = $('.calendar-next-link').attr('href');
 previousLinkHref = $('.calendar-previous-link').attr('href');
 $('#calendar-container').html('<%= escape_javascript(render partial: "events/calendar", locals: {events: @events}) %>');
+$('.simple-calendar .calendar-event').hide().fadeIn(450);
 $('#current-events-list').html('<%= escape_javascript( render partial: "partials/events_list", locals: {events: @events}) %>')
 $('.calendar-next-link').attr('href', nextLinkHref);
 $('.calendar-previous-link').attr('href', previousLinkHref);
