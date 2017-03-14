@@ -1,1 +1,3 @@
-$('#page-container').html('<%= escape_javascript(render partial: "pages/#{@page_name}") %>').hide().fadeIn(450);
+<% if params[:page] %>
+	$('#page-container').html('<%= escape_javascript(render partial: "pages/#{@page_name}") %>').hide().fadeIn(450);
+<% end %>

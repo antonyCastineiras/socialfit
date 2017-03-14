@@ -9,8 +9,8 @@
         <% end %>
       </tr>
   <div class="calendar-heading pull-right">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'calendar-previous-link' %>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'calendar-next-link' %>
+    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'calendar-previous-link', remote: true %>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'calendar-next-link', remote: true %>
   </div>
 
     </thead>
