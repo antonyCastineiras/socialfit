@@ -33,10 +33,10 @@
   </table>
 
     <div class="pull-right calendar-options">
-      <%= link_to "Display all events", user_events_path(requested_events: 'all', start_date: calendar.send(:start_date) ), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'all'}", remote: true%> 
-      <%= link_to "Display your events", user_events_path(requested_events: 'own', start_date: calendar.send(:start_date) ), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'own'}", remote: true %> 
-      <%= link_to "Display friends events", user_events_path(requested_events: 'friends', start_date: calendar.send(:start_date)), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'friends'}", remote: true %> 
-      <%= link_to "Display recommended events", user_events_path(requested_events: 'recommended', start_date: calendar.send(:start_date)), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'recommended'}", remote: true %>
-      <%= link_to "Display nearby events", user_events_path(requested_events: 'nearby', start_date: calendar.send(:start_date)), class: "btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'nearby'}", remote: true %>
+      <%= link_to "Display all events", user_events_path(requested_events: 'all', start_date: calendar.send(:start_date) ), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'all'}", remote: true%> 
+      <%= link_to "Display your events", user_events_path(requested_events: 'own', start_date: calendar.send(:start_date) ), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'own'}", remote: true %> 
+      <%= link_to "Display friends events", user_events_path(requested_events: 'friends', start_date: calendar.send(:start_date)), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'friends'}", remote: true %> 
+      <%= link_to "Display recommended events", user_events_path(requested_events: 'recommended', start_date: calendar.send(:start_date)), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'recommended'}", remote: true %>
+      <%= link_to "Display nearby events", user_events_path(requested_events: 'nearby', start_date: calendar.send(:start_date)), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'nearby'}", remote: true %>
     </div>
 </div>
