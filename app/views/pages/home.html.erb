@@ -1,19 +1,19 @@
 <nav>
 	<ul class="nav nav-tabs">
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'feed' %>" onclick="toggleClass(this);">
-			<%= link_to "Your feed", user_home_path(page: 'feed'), id: 'feed-link', class: 'page-link', remote: true %>
+			<%= link_to "Your feed", user_home_path(page: 'feed', page_update: true), id: 'feed-link', class: 'page-link', remote: true %>
 		</li>
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'schedule' %>" onclick="toggleClass(this);">
-			<%= link_to "Schedule", user_home_path(page: 'schedule'), id: 'schedule-link', class: 'page-link', remote: true %>
+			<%= link_to "Schedule", user_home_path(page: 'schedule', page_update: true), id: 'schedule-link', class: 'page-link', remote: true %>
 		</li>
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'friends' %>" onclick="toggleClass(this);"">
-			<%= link_to "Friends", user_home_path(page: 'friends'), id: 'friends-link', class: 'page-link', remote: true %>
+			<%= link_to "Friends", user_home_path(page: 'friends', page_update: true), id: 'friends-link', class: 'page-link', remote: true %>
 		</li>
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'events' %>" onclick="toggleClass(this);">
-			<%= link_to "Events", user_home_path(page: 'events'), id: 'events-link', class: 'page-link', remote: true %>
+			<%= link_to "Events", user_home_path(page: 'events', page_update: true), id: 'events-link', class: 'page-link', remote: true %>
 		</li>
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'invites' %>" onclick="toggleClass(this);">
-			<%= link_to "Invites", user_home_path(page: 'invites'), id: 'invites-link', class: 'page-link', remote: true %>
+			<%= link_to "Invites", user_home_path(page: 'invites', page_update: true), id: 'invites-link', class: 'page-link', remote: true %>
 		</li>
 	</ul>
 </nav>

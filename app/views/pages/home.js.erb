@@ -1,7 +1,7 @@
-if("<%= escape_javascript(params[:page_updated].to_s) %>" === 'true') {
+if("<%= escape_javascript(params[:page_update].to_s) %>" === 'true') {
 	$('#page-container').html('<%= escape_javascript(render partial: "pages/#{@page_name}") %>').hide().fadeIn(450);
 } else {
 	$('#page-container').html('<%= escape_javascript(render partial: "pages/schedule") %>');
-	$('.calendar-event').hide().fadeIn(225);
+	$('.calendar-event').hide().fadeIn(450);
 }
 
