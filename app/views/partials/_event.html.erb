@@ -1,7 +1,7 @@
 <div class="event">
 	<%= link_to event.name, event_path(event) %>
 	<p><strong>Organized by:</strong> <%= event.organizer.username %></p>
-	<% if current_user.geocoded? %>
+	<% if current_user.postcode.present? %>
 		<p><strong>Distance from you: </strong><%= event.distance_from(current_user).round %> miles</p>
 	<% end %>
 	<p><strong>open: </strong><%= event.open_to_s %></p>
