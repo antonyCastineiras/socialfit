@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_friendship
-  geocoded_by :postcode
+  geocoded_by :postcode, if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
   after_validation :geocode #if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
 
   has_many :events
@@ -55,7 +55,7 @@ class User < ApplicationRecord
     end
   end
 
-  def nearby_events(radius=5)
+  def nearby_events(radius=50)
     Event.near([latitude,longitude], radius).where("open = true")
   end 
 
