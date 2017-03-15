@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_friendship
   geocoded_by :postcode
-  after_validation :geocode, if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
+  after_validation :geocode #if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
 
   has_many :events
   has_many :invites
