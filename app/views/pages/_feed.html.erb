@@ -1,4 +1,4 @@
-<h1>feed</h1>
+<h1>Feed</h1>
 <ul class="list-group">
 	<% current_user.notifications.order('updated_at DESC').each do |notification| %>
 		<li class="list-group-item">

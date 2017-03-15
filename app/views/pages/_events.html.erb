@@ -1,4 +1,9 @@
+<h1>Events</h1>
+<div class="dropdown">
+	<%= link_to "Create event", nil, class: "toggle-dropdown" %>
+	<div class="dropdown-content">
+		<%= render partial: 'forms/new_event_form' %>
+	</div>
+</div>
 <%= link_to "Your Events", user_events_path %>
-<h4>Create event</h4>
-<%= render partial: 'forms/new_event_form' %>
 

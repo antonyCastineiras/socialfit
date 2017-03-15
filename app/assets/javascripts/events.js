@@ -18,7 +18,7 @@ function toggleLinks() {
 	$('.toggle-dropdown').on('click', function(event) {
 		event.preventDefault();
 		hideControlForms(event);
-		$(this).closest('.dropdown').children().last().slideToggle(450);
+		$(this).closest('.dropdown').children('.dropdown-content').slideToggle(450);
 	});
 }
 
