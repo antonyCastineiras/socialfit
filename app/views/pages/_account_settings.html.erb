@@ -1,0 +1,23 @@
+<h1>Account Settings</h1>
+<h2><%= @user.username %></h2>
+
+<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+	<div class="form-group">	
+		<%= f.label :Username %>
+		<%= f.text_field :username, class: 'form-control'  %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Update Username", class: 'btn btn-primary' %> 
+	</div>
+<% end %> 
+
+<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+	<div class="form-group">	
+		<%= f.label :postcode %>
+		<%= f.text_field :postcode, class: 'form-control'  %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Update Postcode", class: 'btn btn-primary' %> 
+	</div>
+<% end %> 
+

@@ -15,6 +15,9 @@
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'invites' %>" onclick="toggleClass(this);">
 			<%= link_to "Invites", user_home_path(page: 'invites', page_update: true), id: 'invites-link', class: 'page-link', remote: true %>
 		</li>
+		<li role="presentation" class="<%= 'active' if session[:current_page] == 'account_settings' %>" onclick="toggleClass(this);">
+			<%= link_to "Account Settings", user_home_path(page: 'account_settings', page_update: true), id: 'account-settings-link', class: 'page-link', remote: true %>
+		</li>
 	</ul>
 </nav>
 
