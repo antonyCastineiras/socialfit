@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+	
+
 	protected
 
 	def update_resource(resource, params)
@@ -6,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def account_update_params
-		params.require(:user).permit(:username)
+		params.require(:user).permit(:username, :postcode)
 	end 
 
 	def after_update_path_for(resource)

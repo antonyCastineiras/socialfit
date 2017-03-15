@@ -2,7 +2,7 @@
 	<%= link_to event.name, event_path(event) %>
 	<p><strong>Organized by:</strong> <%= event.organizer.username %></p>
 	<% if current_user.geocoded? %>
-		<p><strong>Distance from you: </strong><%= event.distance_from(current_user).round %></p>
+		<p><strong>Distance from you: </strong><%= event.distance_from(current_user).round %> miles</p>
 	<% end %>
 	<p><strong>open: </strong><%= event.open_to_s %></p>
 </div>
