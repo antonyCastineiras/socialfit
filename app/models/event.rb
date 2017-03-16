@@ -4,6 +4,14 @@ class Event < ApplicationRecord
   geocoded_by :postcode
   after_validation :geocode 
 
+  def name=(s)
+    write_attribute(:name, s.to_s.titleize)
+  end
+
+  def info=(s)
+    write_attribute(:info, s.to_s.capitalize)
+  end
+
   def organizer
   	user
   end

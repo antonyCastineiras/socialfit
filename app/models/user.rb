@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :invites
   has_many :notifications
 
+  def username=(s)
+    write_attribute(:username, s.to_s.capitalize)
+  end
+
   def pending_invites
     invites.where("accepted = false")
   end
