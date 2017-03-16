@@ -38,6 +38,10 @@ class EventsController < ApplicationController
 		Notification.create(user: @event.organizer, content: "#{current_user.username} joined your event #{@event.name}")
 	end
 
+	def update_events
+		@events = current_user.requested_calendar_events(params[:requested_events])
+	end
+
 	private
 
 	def new_event_params

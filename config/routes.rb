@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :events
   get 'events/join/:id' => 'events#join', as: 'join_event'
   get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'
+  get '/update_events' => 'events#update_events', as: 'update_events'
   resources :invites, only: [:create]
 
   post 'invites/:id/accept' => 'invites#accept', as: 'accept_invite'
