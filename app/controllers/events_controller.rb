@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 		if event.save
 			Notification.create(user: current_user, content: "You created the event #{event.name}")
 			notify_friends(current_user.friends, "#{current_user.username} created the event #{event.name}")
-			redirect_to user_events_path
+			redirect_to event_path(event)
 		else
 			flash[:notice] = "unable to create event"
 		end
