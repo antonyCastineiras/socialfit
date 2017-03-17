@@ -21,7 +21,11 @@
 @import "typography";
 
 .container-fluid {
-	width: 67%;	
+	width: 67%;
+
+	@media(max-width: 580px ) {
+		width: 100%;
+	}	
 }
 
 #home-page-forms-container form {
