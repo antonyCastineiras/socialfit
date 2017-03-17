@@ -42,12 +42,12 @@ class User < ApplicationRecord
   	Event.where("open = true").sample(4)
   end
 
-  def requested_calendar_events(requested_events)
+  def requested_calendar_events(requested_events, distance=nil)
     case requested_events
     when nil
       return all_calendar_events
     when 'nearby'
-      return nearby_events
+      return nearby_events(distance)
     when 'all'
       return all_calendar_events
     when 'friends'

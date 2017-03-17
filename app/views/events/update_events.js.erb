@@ -1,2 +1,3 @@
-$('#current-events-list').replaceWith('<%= escape_javascript(render partial: 'partials/events_list', locals: {events: @events}) %>')
+$('#current-events-list').replaceWith('<%= escape_javascript(render partial: 'partials/events_list', locals: {events: @events}) %>');	
 $('#current-events-list').hide().fadeIn(450) 
+

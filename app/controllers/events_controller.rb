@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
 	
 	def index
-		@events = current_user.requested_calendar_events(params[:requested_events])
+		distance = params[:distance].to_i
+		distance = 50 if params[:distance].to_i == 25 || params[:distance].to_i == 0
+		@events = current_user.requested_calendar_events(params[:requested_events], distance)
 	end
 
 	def new
