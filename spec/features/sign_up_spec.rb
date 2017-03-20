@@ -8,12 +8,12 @@ feature "sign up" do
   	context "providing correct details" do
 
 	  	it "creates a user" do
-	  		create_user("user@one.com", "user1", "password", "password")
+	  		create_user
 	  		expect(User.all.count).to eq 1
 	  	end
 
 	  	it 'redirects you to the users home page' do
-	  		create_user("user@one.com", "user1", "password", "password")
+	  		create_user
 	  		expect(current_path).to eq user_home_path
 	  	end
   	end
@@ -27,7 +27,7 @@ feature "sign up" do
 
   	context "when providing an email that is already taken" do
   		it "doesnt create a user" do
-  			create_user("user@one.com","user1","password","password")
+  			create_user
   			create_user("user@one.com","user2","password","password")
   			expect(User.all.count).to eq 1
   		end
@@ -35,7 +35,7 @@ feature "sign up" do
 
   	context "when providing a username that is already taken" do
   		it "doesnt create a user" do
-  			create_user("user@one.com","user1","password","password")
+  			create_user
   			create_user("user@two.com","user1","password","password")
   			expect(User.all.count).to eq 1
   		end
