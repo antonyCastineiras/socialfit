@@ -1,12 +1,20 @@
 <%= form_for(:user, as: 'user', url: session_path(:user), html: {id: 'sign-in-form'}) do |f| %>
   <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: 'form-control', autofocus: true %>
+    <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-envelope"></span>
+      </div>
+      <%= f.email_field :email, class: 'form-control', placeholder: "Email", autofocus: true %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-asterisk"></span>
+      </div>
+      <%= f.password_field :password, class: 'form-control', placeholder: "Password", autocomplete: "off" %>
+    </div>
   </div>
 
   <div class="actions">
