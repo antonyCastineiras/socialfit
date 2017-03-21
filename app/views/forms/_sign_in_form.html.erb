@@ -1,5 +1,4 @@
 <%= form_for(:user, as: 'user', url: session_path(:user), html: {id: 'sign-in-form'}) do |f| %>
-  <h2>Log in</h2>
   <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, class: 'form-control', autofocus: true %>

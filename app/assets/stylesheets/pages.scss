@@ -12,3 +12,28 @@
 		background: #fff;
 	}
 }
+
+#home-page-forms-container {
+	width: 500px;
+	margin: auto;
+
+	li.active a {
+		border-top: none;
+	}
+
+	li:first-child.active a {
+		border-left: none;
+	}
+
+	// .forms-container {
+	// 	position: relative;
+	// 	width: 100%;
+
+
+	// 	div[class$="container"] {
+	// 		background: #fff;
+	// 	  width: 100%;
+	// 		padding: $padding-large-horizontal;
+	// 	}
+	// }
+}
