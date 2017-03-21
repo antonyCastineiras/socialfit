@@ -18,3 +18,26 @@ def create_event(name, info, start_time, postcode, open)
 	open ? choose('open_true') : choose('open_false')
 	click_on('Create Event')
 end 
+
+def log_out
+	click_link("Log Out")
+end
+
+def create_friend_request(user)
+	click_link("Friends")
+	fill_in(:email, with: user.email )
+	click_on("Add Friend")
+end
+
+def log_in(user)
+	visit "/"
+	find(:css, '#sign-in-form input[name="user[email]"]').set(user.email)
+	find(:css, '#sign-in-form input[name="user[password]"]').set(user.password)
+	click_on("Log in")
+end
+
+def accept_friend_request
+	click_link("Invites")
+	click_on("Accept")
+end
+
