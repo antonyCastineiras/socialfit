@@ -14,7 +14,7 @@
 }
 
 #home-page-forms-container {
-	width: 500px;
+	width: 85%;
 	margin: auto;
 
 	li.active a {
@@ -25,15 +25,7 @@
 		border-left: none;
 	}
 
-	// .forms-container {
-	// 	position: relative;
-	// 	width: 100%;
-
-
-	// 	div[class$="container"] {
-	// 		background: #fff;
-	// 	  width: 100%;
-	// 		padding: $padding-large-horizontal;
-	// 	}
-	// }
+	@media (min-width: 1000px) {
+		width: 500px;
+	}
 }

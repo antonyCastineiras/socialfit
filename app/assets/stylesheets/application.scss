@@ -20,11 +20,24 @@
 @import "calendar";
 @import "typography";
 
-.container-fluid {
-	width: 67%;
 
-	@media(max-width: 580px ) {
-		width: 100%;
+$font-family-sans-serif:  "Isotok Web", Helvetica, Arial, sans-serif !default;
+$font-family-serif:       "Lora", "Times New Roman", Times, serif !default;
+
+body, p, a, input {
+	font-family: "Raleway", serif; 
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Bitter", sans-serif;
+}
+
+
+.container-fluid {
+	width: 100%;
+
+	@media (min-width: 1000px ) {
+		width: 67%
 	}	
 }
 
