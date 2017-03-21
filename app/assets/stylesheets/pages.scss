@@ -17,6 +17,10 @@
 	width: 85%;
 	margin: auto;
 
+	.panel-body form {
+		padding: 15px;
+	}
+
 	li.active a {
 		border-top: none;
 	}
