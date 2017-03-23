@@ -1,5 +1,5 @@
 <div class="signed-in-as-details panel panel-default">
-	<% if user.avatar.present? %>
+	<% if current_user.avatar.present? %>
 		<%= image_tag current_user.avatar.url, class: 'img-thumbnail', width: "200px", height: "auto" %>
 	<% end %> 
 </div>
