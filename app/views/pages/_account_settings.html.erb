@@ -21,3 +21,17 @@
 	</div>
 <% end %> 
 
+<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+	<%= f.hidden_field :avatar_cache %>
+	<div class="input-group">
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-camera"></span>
+		</div>
+		<%= f.file_field :avatar, class: 'form-control' %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Update Avatar", class: 'btn btn-primary' %>
+ 	</div>
+<% end %>
+

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_friendship
   geocoded_by :postcode, if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
   after_validation :geocode #if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
@@ -13,6 +14,8 @@ class User < ApplicationRecord
   has_many :events
   has_many :invites
   has_many :notifications
+
+  mount_uploader :avatar, AvatarUploader
 
   def username=(s)
     write_attribute(:username, s.to_s.capitalize)

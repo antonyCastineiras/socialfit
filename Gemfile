@@ -11,6 +11,7 @@ gem 'simple_calendar', "~> 2.0"
 gem 'has_friendship'
 gem 'geocoder'
 gem 'capybara'
+gem 'carrierwave', '~> 1.0'
 
 
 

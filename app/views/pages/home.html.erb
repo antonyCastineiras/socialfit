@@ -1,3 +1,7 @@
+<div class="signed-in-as-details panel panel-default">
+	<%= image_tag current_user.avatar.url, class: 'img-thumbnail', width: "200px", height: "auto" %> 
+</div>
+
 <nav>
 	<ul class="nav nav-tabs">
 		<li role="presentation" class="<%= 'active' if session[:current_page] == 'feed' %>" onclick="toggleClass(this);">
