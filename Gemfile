@@ -11,7 +11,10 @@ gem 'simple_calendar', "~> 2.0"
 gem 'has_friendship'
 gem 'geocoder'
 gem 'capybara'
+gem 'mini_magick'
+gem 'rmagick'
 gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
 
 
 

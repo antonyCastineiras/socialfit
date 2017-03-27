@@ -1,8 +1,24 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  include Cloudinary::CarrierWave
+
+  # process :convert => 'png'
+  # process :tags => ['user_avatar']
+  
+  version :standard do
+    process :resize_to_fill => [100, 150, :north]
+  end
+  
+  version :thumbnail do
+    resize_to_fit(50, 50)
+  end
+
+  def public_id
+    return model.username
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file

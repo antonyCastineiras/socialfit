@@ -1,5 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
-  
+
+  def update
+  	super
+  	Cloudinary::Uploader.upload(params[:user][:avatar].tempfile)
+  	flash[:notice] = "#{params[:user][:avatar].tempfile}"
+  end
 
 	protected
 
@@ -8,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def account_update_params
-		params.require(:user).permit(:username, :postcode, :avatar, :avatar_cache, :remove_avatar)
+		params.require(:user).permit(:username, :postcode, :avatar, :avatar_cache, :remove_avatar,:tags)
 	end 
 
 	def after_update_path_for(resource)
