@@ -18,3 +18,4 @@
 
 # ignore public images
 /public/user
+/config/cloudinary.yml

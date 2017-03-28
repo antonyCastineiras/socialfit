@@ -13,11 +13,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
   
   version :thumbnail do
-    resize_to_fit(50, 50)
+    resize_to_fit(250, 150)
   end
 
   def public_id
-    return model.username
+    return "sofit/#{model.username}"
   end
 
   # Choose what kind of storage to use for this uploader:

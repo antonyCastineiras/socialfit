@@ -1,7 +1,10 @@
-<div class="signed-in-as-details panel panel-default">
+<div class="signed-in-as-details">
 	<% if current_user.avatar.present? %>
-		<%= cl_image_tag(current_user.avatar ) %>
-		<%= cl_image_tag("wabtng9dapakhd5tteuw.jpg") %>
+		<button  type ="button" class="btn btn-default btn-xs" style="display:block;">
+			<span class = "glyphicon glyphicon-user"></span>
+			<%= current_user.email %>
+		</button>
+		<%= cl_image_tag(current_user.avatar.url(:thumbnail), class: 'img-thumbnail' ) %>
 	<% end %> 
 </div>
 
