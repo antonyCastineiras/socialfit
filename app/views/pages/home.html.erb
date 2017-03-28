@@ -4,7 +4,7 @@
 			<span class = "glyphicon glyphicon-user"></span>
 			<%= current_user.email %>
 		</button>
-		<%= cl_image_tag(current_user.avatar.url(:thumbnail), class: 'img-thumbnail' ) %>
+		<%= cl_image_tag("sofit/#{current_user.avatar.filename}", width: 250, height: 160, class: 'img-thumbnail' ) %>
 	<% end %> 
 </div>
 
