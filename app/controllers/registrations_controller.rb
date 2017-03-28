@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
-    	Cloudinary::Uploader.upload(params[:user][:avatar].tempfile, :public_id => "sofit/#{current_user.username}")
+    	Cloudinary::Uploader.upload(params[:user][:avatar].tempfile, :public_id => "sofit/#{current_user.username}") if params[:user][:avatar]
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
           :update_needs_confirmation : :updated
