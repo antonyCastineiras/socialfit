@@ -36,6 +36,7 @@
 <% end %>
 
 <%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+	<%= f.label :sport_list, "Add your interests below leaving a space between each one" %>
 	<div class="input-group">
 		<div class="input-group-addon">
 			<span class="glyphicon glyphicon-tags"></span>
