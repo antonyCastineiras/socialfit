@@ -1,7 +1,21 @@
 <h4>Your Friends</h4>
-<% @friends.each do |friend| %>
-	<div id="friend-<%= friend.id %>" class="friend-container">
-		<p><%= friend.email %></p>
-		<%= link_to "Remove Friend", remove_friendship_path(friend), method: :delete, remote: true %>
+
+<% @friends.each_slice(4) do |friends_batch| %>
+	<div class="row is-flex">
+		<% friends_batch.each do |friend| %> 
+			<div id="friend-<%= friend.id %>" class="friend-container col-xs-6 col-md-3 panel panel-default text-center">
+				<div class="thumbnail">		
+				<% if friend.avatar.present? %>
+					<%= cl_image_tag("sofit/#{friend.avatar.filename}", transformation: [{width: 200, height: 200, crop: "fit"}] ) %>
+				<% else %>
+					<%= cl_image_tag("sample.jpg", transformation: {width: 200, height: 200, crop: "fit"}, class: 'img-thumbnail') %>
+				<% end %>
+				<div class="caption">
+				<h3><%= friend.username %></h3>
+				<%= link_to "Remove Friend", remove_friendship_path(friend), method: :delete, remote: true %>
+				</div>
+				</div>
+			</div>
+		<% end %>
 	</div>
 <% end %>

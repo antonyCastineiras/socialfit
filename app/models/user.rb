@@ -66,4 +66,24 @@ class User < ApplicationRecord
     Event.near([latitude,longitude], radius).where("open = true")
   end 
 
+  def random_events
+    100.times { |i|
+      u = User.find(rand(User.count))
+      u.events.create(name: "event #{i+1}", info: "here is some information about event #{i+1}", start_time: day_in_future, postcode: random_postcode, open: true)
+    }
+  end
+
+  def day_in_future
+    now = Time.now
+    number_of_days = 14
+    seconds_in_day = 60 * 60 * 24
+    random_seconds = rand(number_of_days * seconds_in_day)
+    (now + random_seconds).strftime("%d/%m/%Y %H:%M")
+  end
+
+  def random_postcode
+    a = ('a'..'z').to_a
+    l = a[rand(a.count)] 
+    "#{a[rand(a.length)]}#{a[rand(a.length)]}#{rand(1..9)}#{rand(1..9)} #{rand(1..9)}#{a[rand(a.length)]}#{a[rand(a.length)]}"
+  end
 end

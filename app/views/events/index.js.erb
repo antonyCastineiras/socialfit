@@ -4,6 +4,7 @@ $('#calendar-container').html('<%= escape_javascript(render partial: "events/cal
 $('.simple-calendar .calendar-event').hide().fadeIn(450);
 $('#current-events-list').html('<%= escape_javascript( render partial: "partials/events_list", locals: {events: @events}) %>')
 
+$('#current-events-list').hide().fadeIn(450);
 
 //if nearby events have been requested display the distance-options
 if('<%= escape_javascript(params[:requested_events]) %>' === 'nearby'  ) {
