@@ -1,50 +1,54 @@
-<h1>Account Settings</h1>
-<h2><%= @user.username %></h2>
+<div class="account-settings-container">
+	<h1>Account Settings</h1>
+	<h2><%= @user.username %></h2>
 
-<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
-	<div class="form-group">	
-		<%= f.label :Username %>
-		<%= f.text_field :username, class: 'form-control'  %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Update Username", class: 'btn btn-primary' %> 
-	</div>
-<% end %> 
-
-<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
-	<div class="input-group">	
-		<%= f.label :postcode %>
-		<%= f.text_field :postcode, class: 'form-control'  %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Update Postcode", class: 'btn btn-primary' %> 
-	</div>
-<% end %> 
-
-<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
-	<%= f.hidden_field :avatar_cache %>
-	<div class="input-group">
-		<div class="input-group-addon">
-			<span class="glyphicon glyphicon-camera"></span>
+	<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+		<div class="input-group">	
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-user"></span>
+			</span>
+			<%= f.text_field :username, class: 'form-control'  %>
+			<span class="input-group-btn">
+				<%= f.submit "Update Username", class: 'btn btn-primary' %> 
+			</span>
 		</div>
-		<%= f.file_field :avatar, class: 'form-control' %>
-	</div>
+	<% end %> 
 
-	<div class="actions">
-		<%= f.submit "Update Avatar", class: 'btn btn-primary' %>
- 	</div>
-<% end %>
-
-<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
-	<%= f.label :sport_list, "Add your interests below leaving a space between each one" %>
-	<div class="input-group">
-		<div class="input-group-addon">
-			<span class="glyphicon glyphicon-tags"></span>
+	<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+		<div class="input-group">	
+			<div class="input-group-addon">
+				<span class="glyphicon glyphicon-envelope"></span>
+			</div>
+			<%= f.text_field :postcode, class: 'form-control'  %>
+			<span class="input-group-btn">
+				<%= f.submit "Update Postcode", class: 'btn btn-primary' %> 
+			</span>
 		</div>
-		<%= f.text_field :sport_list, class: 'form-control' %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Update Interests", class: 'btn btn-primary' %>
-	</div>
-<% end %>
+	<% end %> 
 
+	<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+		<%= f.hidden_field :avatar_cache %>
+		<div class="input-group">
+			<div class="input-group-addon">
+				<span class="glyphicon glyphicon-camera"></span>
+			</div>
+			<%= f.file_field :avatar, class: 'form-control' %>
+			<span class="input-group-btn">
+				<%= f.submit "Update Avatar", class: 'btn btn-primary' %>
+			</span>
+		</div>
+	<% end %>
+
+	<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-tags"></span>
+			</span>
+			<%= f.text_field :sport_list, class: 'form-control' %>
+			<span class="input-group-btn">
+				<%= f.submit "Update Interests", class: 'btn btn-primary' %>
+			</span>
+		</div>
+		<small>Add your interests above leaving a space between each one</small>	
+	<% end %>
+</div>
