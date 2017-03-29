@@ -1,1 +1,12 @@
 $('#invited-by-<%= escape_javascript(params[:id]) %>').fadeOut(450);
+updateInvitesBadge();
+
+function updateInvitesBadge() {
+	inviteCount = <%= escape_javascript (@user.requested_friends.count + @user.pending_invites.count).to_s %>
+
+	if (inviteCount === 0) {
+		$('.invites-badge').fadeOut(450);
+	} else {
+		$('.invites-badge').text(inviteCount);
+	}
+}

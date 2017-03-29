@@ -18,8 +18,10 @@ class FriendshipsController < ApplicationController
 	end
 
 	def accept
-		current_user.accept_request(@friend_request_user)
-		Notification.create(user: @friend_request_user, content: "#{current_user.username} accepted your friend request")
+		@user = current_user
+		@user.accept_request(@friend_request_user)
+		Notification.create(user: @friend_request_user, content: "#{@user.username} accepted your friend request")
+		Notification.create(user: @user, content: "You are now friends with #{@friend_request_user.username}.")
 	end
 
 	def reject

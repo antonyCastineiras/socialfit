@@ -16,6 +16,7 @@ class InvitesController < ApplicationController
 	end
 
   def accept
+    @user = current_user
   	@invite.accepted = true
   	@invite.save
     Notification.create(user: User.find(@invite.created_by), content: "#{@invite.user.username} accepted your invite to #{@invite.event.name}") 

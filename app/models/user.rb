@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :events
   has_many :invites
+  has_many :pending_invites, through: :invites, source: :invite
   has_many :notifications
 
   acts_as_taggable
