@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   def sport_list=(string)
     sports = string.split(" ")
-    sports.each { |sport| sport_list.add(sport) }
+    sports.each { |sport| sport_list.add(sport.downcase) if !sport_list.include?(sport.downcase)  }
   end
 
   def pending_invites
@@ -55,7 +55,7 @@ class User < ApplicationRecord
       tagged_events = Event.tagged_with(sport.name)
       tagged_events.each {|event| events << event}  
       }
-  	events
+  	events.uniq
   end
 
   def requested_calendar_events(requested_events, distance=nil)

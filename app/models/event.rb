@@ -17,7 +17,7 @@ class Event < ApplicationRecord
 
   def sport_list=(s)
     sports = s.split(" ")
-    sports.each { |sport| sport_list.add(sport) }
+    sports.each { |sport| sport_list.add(sport.downcase) if !sport_list.include?(sport.downcase) }
   end
 
   def organizer
