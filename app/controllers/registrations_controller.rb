@@ -29,7 +29,7 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def account_update_params
-		params.require(:user).permit(:username, :postcode, :avatar, :avatar_cache, :remove_avatar,:tags)
+		params.require(:user).permit(:username, :postcode, :avatar, :avatar_cache, :remove_avatar,:sport_list)
 	end 
 
 	def after_update_path_for(resource)

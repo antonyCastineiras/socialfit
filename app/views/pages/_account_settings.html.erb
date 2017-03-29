@@ -35,3 +35,15 @@
  	</div>
 <% end %>
 
+<%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
+	<div class="input-group">
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-list-alt"></span>
+		</div>
+		<%= f.text_field :sport_list, class: 'form-control' %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Update Interests", class: 'btn btn-primary' %>
+	</div>
+<% end %>
+

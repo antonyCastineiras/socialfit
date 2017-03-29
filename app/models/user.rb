@@ -15,10 +15,18 @@ class User < ApplicationRecord
   has_many :invites
   has_many :notifications
 
+  acts_as_taggable
+  acts_as_taggable_on :interests, :sports
+
   mount_uploader :avatar, AvatarUploader
 
   def username=(s)
     write_attribute(:username, s.to_s.capitalize)
+  end
+
+  def sport_list=(string)
+    sports = string.split(" ");
+    sports.each { |sport| sport_list.add(sport) }
   end
 
   def pending_invites

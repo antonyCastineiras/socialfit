@@ -15,6 +15,7 @@ gem 'mini_magick'
 gem 'rmagick'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 
