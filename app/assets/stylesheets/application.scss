@@ -43,19 +43,19 @@ h1,h2,h3,h4,h5,h6 {
 	}	
 }
 
-
-#controls {
-	#new-event-form, #sign-up-form  {
-		display: none;
-	}
+#top {
+	position: relative;
 }
 
-.dropdown-content {
+.signed-in-as-details {
+	position: absolute;
+	top: calc(100% + 20px);
+	left: 20px;
 	display: none;
-}
 
-.inline-button {
-	display:inline
+	@media (min-width:1350px) {
+		display: block;
+	}
 }
 
 // elements to be hidden

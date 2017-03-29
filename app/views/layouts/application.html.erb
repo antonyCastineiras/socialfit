@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header>
+    <header id="top">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -30,6 +30,17 @@
           
         </div>
       </nav>
+      <% if current_user %>
+      <div class="signed-in-as-details">
+        <button  type ="button" class="btn btn-default btn-xs" style="display:block;">
+          <span class = "glyphicon glyphicon-user"></span>
+          <%= current_user.email %>
+        </button>
+        <% if current_user.avatar.present? %>
+          <%= cl_image_tag("sofit/#{current_user.avatar.filename}", transformation: { width: 200, crop: "scale"}, class: 'img-thumbnail' ) %>
+        <% end %> 
+      <% end %>
+      </div>
     </header>
     
     <div class="container-fluid">
