@@ -12,7 +12,7 @@
 <% end %> 
 
 <%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
-	<div class="form-group">	
+	<div class="input-group">	
 		<%= f.label :postcode %>
 		<%= f.text_field :postcode, class: 'form-control'  %>
 	</div>
@@ -38,7 +38,7 @@
 <%= form_for current_user, url: user_registration_path, method: 'patch' do |f| %>
 	<div class="input-group">
 		<div class="input-group-addon">
-			<span class="glyphicon glyphicon-list-alt"></span>
+			<span class="glyphicon glyphicon-tags"></span>
 		</div>
 		<%= f.text_field :sport_list, class: 'form-control' %>
 	</div>

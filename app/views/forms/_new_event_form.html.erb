@@ -29,6 +29,13 @@
 		<%= radio_button_tag :open, false, calue: false %>
 	</div>
 
+	<div class="input-group">
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-tags"></span>
+		</div>
+		<%= text_field_tag :sport_list, nil, class: 'form-control' %>
+	</div>
+
 	<div class="actions">
 		<%= submit_tag "Create Event", class: "btn btn-primary" %>
 	</div>

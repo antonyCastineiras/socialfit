@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def sport_list=(string)
-    sports = string.split(" ");
+    sports = string.split(" ")
     sports.each { |sport| sport_list.add(sport) }
   end
 
@@ -50,7 +50,12 @@ class User < ApplicationRecord
   end
 
   def recommended_events
-  	Event.where("open = true").sample(4)
+    events = []
+    sports.each { |sport| 
+      tagged_events = Event.tagged_with(sport.name)
+      tagged_events.each {|event| events << event}  
+      }
+  	events
   end
 
   def requested_calendar_events(requested_events, distance=nil)

@@ -4,12 +4,20 @@ class Event < ApplicationRecord
   geocoded_by :postcode
   after_validation :geocode 
 
+  acts_as_taggable
+  acts_as_taggable_on :sports
+
   def name=(s)
     write_attribute(:name, s.to_s.titleize)
   end
 
   def info=(s)
     write_attribute(:info, s.to_s.capitalize)
+  end
+
+  def sport_list=(s)
+    sports = s.split(" ")
+    sports.each { |sport| sport_list.add(sport) }
   end
 
   def organizer

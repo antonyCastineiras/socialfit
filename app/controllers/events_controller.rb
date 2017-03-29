@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 	end
 
 	def create	
-		event = Event.new(new_event_params)
+		event = Event.new(event_params)
 		event.user = current_user
 		if event.save
 			Notification.create(user: current_user, content: "You created the event #{event.name}")
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
 
 	private
 
-	def new_event_params
-		params.permit(:name,:info,:start_time,:postcode,:open,:requested_events)
+	def event_params
+		params.permit(:name,:info,:start_time,:postcode,:open,:requested_events, :sport_list)
 	end
 end
