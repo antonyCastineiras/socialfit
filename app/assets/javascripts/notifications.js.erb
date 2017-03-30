@@ -19,7 +19,6 @@ function isScrolledIntoView(elem) {
 
 function needsMoreNotifications() {
 	if (  isCorrectController("notifications","index") && isScrolledIntoView( $('.notifications-list li:last-child')  ) && !ajaxInProgress && needsUpdate  ) {
-		alert('success');
 		ajaxInProgress = true;
 		$.ajax({
 			type: 'get',
