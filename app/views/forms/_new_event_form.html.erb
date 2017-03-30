@@ -1,38 +1,44 @@
 <%= form_tag events_path, method: :post, id: "new-event-form" do %>
-	<div class="form-group">
-		<%= label_tag :name, "Name: " %>
-		<%= text_field_tag :name, nil, class: "form-control" %>
+	<div class="input-group">
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-font"></span>
+		</span>
+		<%= text_field_tag :name, nil, class: "form-control", placeholder: "Event Name" %>
 	</div>
 
-	<div class="form-group">
-		<%= label_tag :info, "Info: " %>
-		<%= text_area_tag :info, nil, class: "form-control" %>
-	</div>
 
-	<div class="form-group">
-		<%= label_tag :start_time, "Start time: " %>
+	<div class="input-group">
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-time"></span>
+		</span>
 		<%= datetime_local_field_tag :start_time, nil, class: "form-control" %>
 	</div>
 
-	<div class="form-group">
-		<%= label_tag :postcode, "Postcode: " %>
-		<%= text_field_tag :postcode, nil, class: 'form-control' %> 
+	<div class="input-group">
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-envelope"></span>
+		</span>
+		<%= text_field_tag :postcode, nil, class: 'form-control', placeholder: "Postcode" %> 
 	</div>
 
-	<%= label_tag :sport_list, "Add relavant sports leaving a space in between each:" %>
+	<small>Add relavant sports leaving a space in between each</small>
 	<div class="input-group">
 		<div class="input-group-addon">
 			<span class="glyphicon glyphicon-tags"></span>
 		</div>
-		<%= text_field_tag :sport_list, nil, class: 'form-control' %>
+		<%= text_field_tag :sport_list, nil, class: 'form-control', placeholder: "Event tags" %>
 	</div>
 	
-	<div class="form-group">
+	<div class="input-group">
+		<%= text_area_tag :info, nil, class: "form-control", placeholder: "Enter a description of the event here", width: 300 %>
+	</div>
+	
+	<div class="input-group">
 		<%= label_tag :open, "Open(anyone can join): ", value: true %>
 		<%= radio_button_tag :open, true, checked: true, value: true %>
 	</div>
 
-	<div class="form-group">
+	<div class="input-group">
 		<%= label_tag :open, "Closed(only people you invite can join): ", value: false %>
 		<%= radio_button_tag :open, false, calue: false %>
 	</div>

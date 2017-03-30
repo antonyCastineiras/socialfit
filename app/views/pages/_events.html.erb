@@ -1,10 +1,7 @@
 <h1>Events</h1>
-<div class="dropdown">
-	<%= link_to "Create event", nil, class: "toggle-dropdown" %>
-	<div class="dropdown-content">
-		<%= render partial: 'forms/new_event_form' %>
-	</div>
-</div>
+
+<h3>Create an Event</h3>  	  	
+<%= render partial: 'forms/new_event_form' %>
 
 <div class="calendar-options">
   <%= link_to "Display all events", user_events_path(requested_events: 'all' ), class: "update-calendar-link btn btn-primary update-calendar-btn #{ 'active' if params[:requested_events] == 'all'}", remote: true%> 
