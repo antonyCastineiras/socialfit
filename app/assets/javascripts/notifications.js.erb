@@ -1,0 +1,45 @@
+var ajaxInProgress = false;
+var needsUpdate = true;
+
+$(document).on('turbolinks:load',function() {
+	$(window).scroll(function() {
+		needsMoreNotifications();
+	});
+});
+function isScrolledIntoView(elem) {
+	var docViewTop = $(window).scrollTop();
+	var docViewBottom = docViewTop + $(window).height();
+
+	var elemTop = $(elem).offset().top;
+	var elemBottom = elemTop + $(elem).height();
+
+	return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
+}
+
+
+function needsMoreNotifications() {
+	if (  isCorrectController("notifications","index") && isScrolledIntoView( $('.notifications-list li:last-child')  ) && !ajaxInProgress && needsUpdate  ) {
+		alert('success');
+		ajaxInProgress = true;
+		$.ajax({
+			type: 'get',
+			url: '/notifications/get',
+			data: {lowerLimit: $('.notifications-list li').length, upperLimit: $('.notifications-list li').length + 20},
+			success: function(data) {
+				$.each(data.notifications, function(index, notification) {
+					$('.notifications-list').append('<li class="list-group-item"><p>'+ notification.content+'</p></li>')
+					$('.notifications-list li:last-child').hide().fadeIn(450);
+				});
+				ajaxInProgress = false;
+				if (data.notifications.length == 0) { needsUpdate = false };
+			}
+		});
+	}
+}
+
+function isCorrectController(controller,action) {
+	paths = window.location.pathname.split("/");
+	lastPath = paths[paths.length-1]
+	secondLast = paths[paths.length-2]
+	return (lastPath === action && secondLast === controller)
+}

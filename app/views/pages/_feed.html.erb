@@ -1,8 +1,8 @@
 <h1>Feed</h1>
-<ul class="list-group">
-	<% current_user.notifications.order('updated_at DESC').each do |notification| %>
-		<li class="list-group-item">
-			<p><%= notification.content %></p>
-		</li>
+<ul class="notifications-list list-group">
+	<% @user.notifications.order('updated_at DESC').first(10).each do |notification| %>
+		<%= render partial: 'partials/notification', locals: {notification: notification} %>
 	<% end %>
 </ul>
+
+<%= link_to "See all #{@user.notifications.count} of your notifications", user_notifications_path%>

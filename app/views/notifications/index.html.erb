@@ -1,0 +1,8 @@
+<h1>View Notifications</h1>
+<ul class="list-group notifications-list">
+	<% @notifications.order('updated_at DESC').first(20).each do |notification| %>
+		<li class="list-group-item">
+			<p><%= notification.content %></p>
+		</li>
+	<% end %>
+</ul>

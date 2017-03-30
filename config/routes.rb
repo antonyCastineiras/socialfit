@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+
   get 'invites/accept'
 
   get 'invites/reject'
@@ -7,6 +9,9 @@ Rails.application.routes.draw do
   	registrations: 'registrations',
   	sessions: 'sessions'
   }
+
+  get 'users/notifications/index' => 'notifications#index', as: 'user_notifications'
+  get 'notifications/get' => 'notifications#get'
 
   get 'users/:user_id/friendships' => 'friendships#index', as: 'user_friendships' 
   get 'users/events' => 'events#index', as: 'user_events' 
