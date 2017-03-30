@@ -34,6 +34,10 @@ h1,h2,h3,h4,h5,h6 {
 	font-family: "Bitter", sans-serif;
 }
 
+form {
+	margin-bottom: 15px;
+}
+
 
 .container-fluid {
 	width: 100%;
@@ -63,7 +67,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .input-group {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 // elements to be hidden

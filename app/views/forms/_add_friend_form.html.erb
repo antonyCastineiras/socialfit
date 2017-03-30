@@ -1,6 +1,8 @@
 <%= form_tag friendships_path, method: :post, remote: true, class: 'add-friend-form form' do %>
-	<div class="form-group">
-		<%= label_tag :email %>
+	<div class="input-group">
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-user"></span>
+		</span>
 		<%= text_field_tag :email, nil, class: 'form-control', placeholder: 'enter your friends email here to send them a friend request' %>
 	</div>
 
