@@ -1,23 +1,52 @@
-<h3><%= @event.name %></h3>
-<p><%= @event.start_time.strftime("Starts at: %H:%M") %></p>
-<p>Info: <%= @event.info %></p>
-<p>Open/Closed: <%= @event.open_to_s %></p>
-<p>Organized by: <%= @event.organizer.username %></p>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<h3><%= @event.name %></h3>
+		<p><%= @event.start_time.strftime("Starts at: %a %e %b at %H:%M") %></p>
+		<p>Info: <%= @event.info %></p>
+		<p>Open/Closed: <%= @event.open_to_s %></p>
+		<p>Organized by: <%= @event.organizer.username %></p>		
+	</div>
+	
+	<div class="col-md-6 col-xs-12">
+		<h3>Invite to Event</h3>
+		<% if @event.open || @event.organizer == current_user %>
+			<%= render partial: 'forms/new_event_invite_form' %>
+		<% else %>
+			<p>Sorry this is a closed event. Only an organizer can invite to this event.</p>
+		<% end %>
+		<% if @event.open && @event.organizer != current_user %>
+			<%= link_to "Join group", join_event_path(@event), remote: true %>
+		<% end %>
+	</div>
+</div>
 
-<h4>Currently Attending</h4>
-<% @event.attending.each do |user| %>
-	<p><%= user.username %></p>
-<% end %>
-<% if @event.open && @event.organizer != current_user %>
-	<%= link_to "Join group", join_event_path(@event), remote: true %>
-<% end %>
-<% if @event.open || @event.organizer == current_user %>
-	<%= render partial: 'forms/new_event_invite_form' %>
-<% end %>
-<% if @event.user == current_user %>
-	<%= link_to "Delete Event", event_path(@event), method: :delete %>
-<% end %>
-<div id="map" style="width: 570px; height: 380px"></div>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<h3>Currently Attending</h3>
+		<% if @event.attending.any? %>
+			<% @event.attending.first(8).each do |user| %>
+				<div class="user-thumbnail text-center">
+					<% if user.avatar.present? %>
+						<%= cl_image_tag("sofit/#{user.avatar.filename}", class: 'img-thumbnail' ) %>
+					<% else %>
+						<%= cl_image_tag("sample.jpg", class: 'img-thumbnail') %>
+					<% end %>
+					<small><%= user.username %></small>
+				</div>
+			<% end %>
+		<% else %>
+			<p>Currently no one attending this event. Why don't you invite someone?</p>
+		<% end %>
+	</div>
+	<% if @event.user == current_user %>
+	<div class="col-md-6">
+		<h3>Event Owner Options</h3>
+		<%= link_to "Delete Event", event_path(@event), method: :delete %>
+	</div>
+	<% end %>
+</div>
+
+<div id="map" style="width: '100%'; height: 380px"></div>
 <script>
 	$(document).on('turbolinks:load', function() {
 		loadMap(<%= @event.latitude %>, <%= @event.longitude %>);
@@ -25,7 +54,7 @@
 
 	function loadMap(lat,lng) {
 		var mapOptions = {
-			center: new google.maps.LatLng(lat, lng), zoom: 16,
+			center: new google.maps.LatLng(lat, lng), zoom: 12,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 

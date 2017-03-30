@@ -12,3 +12,14 @@
 		margin-right: 5px;
 	}
 }
+
+.user-thumbnail {
+	display: inline-block;	
+	box-sizing: border-box;
+	width: 20%;
+
+	img {
+		width:100%;
+		display: block;
+	}
+}
