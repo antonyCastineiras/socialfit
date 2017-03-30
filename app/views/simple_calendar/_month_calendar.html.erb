@@ -9,8 +9,12 @@
         <% end %>
       </tr>
   <div class="calendar-heading pull-right">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view + '&page_update=false', class: 'calendar-previous-link', remote: true %>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view + '&page_update=false', class: 'calendar-next-link', remote: true %>
+    <%= link_to calendar.url_for_previous_view + '&page_update=false', class: 'calendar-previous-link', remote: true do %>
+      <i class="glyphicon glyphicon-chevron-left"></i>
+    <% end %>
+    <%= link_to calendar.url_for_next_view + '&page_update=false', class: 'calendar-next-link', remote: true do %>
+      <i class="glyphicon glyphicon-chevron-right"></i>
+    <% end %>
   </div>
 
     </thead>

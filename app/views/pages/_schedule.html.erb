@@ -1,6 +1,5 @@
-<h1>Schedule</h1>
 <div id="calendar-container">
 	<%= render partial: "events/calendar", locals: {events: @events} %>
 </div>
-<h2>Currently Displayed Events</h2>
+<h2 class="text-center">Currently Displayed Events</h2>
 <%= render partial: 'partials/events_list', locals: {events: @events} %>
