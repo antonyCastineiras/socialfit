@@ -2,20 +2,12 @@ var ajaxInProgress = false;
 var needsUpdate = true;
 
 $(document).on('turbolinks:load',function() {
+	needsUpdate = true;
+	ajaxInProgress = false;
 	$(window).scroll(function() {
 		needsMoreNotifications();
 	});
 });
-function isScrolledIntoView(elem) {
-	var docViewTop = $(window).scrollTop();
-	var docViewBottom = docViewTop + $(window).height();
-
-	var elemTop = $(elem).offset().top;
-	var elemBottom = elemTop + $(elem).height();
-
-	return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
-}
-
 
 function needsMoreNotifications() {
 	if (  isCorrectController("notifications","index") && isScrolledIntoView( $('.notifications-list li:last-child')  ) && !ajaxInProgress && needsUpdate  ) {
@@ -36,9 +28,4 @@ function needsMoreNotifications() {
 	}
 }
 
-function isCorrectController(controller,action) {
-	paths = window.location.pathname.split("/");
-	lastPath = paths[paths.length-1]
-	secondLast = paths[paths.length-2]
-	return (lastPath === action && secondLast === controller)
-}
+

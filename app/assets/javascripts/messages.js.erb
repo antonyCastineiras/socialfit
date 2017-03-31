@@ -1,0 +1,22 @@
+$(document).on('turbolinks:load', function() {
+	needsUpdate = true;
+	ajaxInProgress = false;
+	$(window).scroll(function() {
+		needsMoreMessages();
+	});
+});
+
+function needsMoreMessages() {
+	if ( isCorrectController("messages", "index") && isScrolledIntoView($('.message-list li:last-child')) && !ajaxInProgress && needsUpdate ) {
+		ajaxInProgress = true;
+		$.ajax({
+			type: 'get',
+			url: '/messages/get',
+			dataType: 'script',
+			data: {lowerLimit: $('.message-list li').length, 
+						 upperLimit: $('.message-list li').length + 10, 
+						 resource: 'Event',
+						 id: $('#event-id').text() }
+		});
+	}
+}

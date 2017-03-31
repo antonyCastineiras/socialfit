@@ -4,7 +4,7 @@
 			<% if message.user.avatar.present? %>
 				<%= cl_image_tag("sofit/#{message.user.avatar.filename}", transformation: { width: 64, height: 64, crop: 'fit' } ) %>
 			<% else %>
-				<%= cl_image_tag("sample.jpg", transformation: { width: 64, height: 64 } )%>
+				<%= cl_image_tag("sample.jpg", transformation: { width: 64, height: 64, crop: 'fit' } )%>
 			<% end %>
 		</div>
 		<div class="media-body">

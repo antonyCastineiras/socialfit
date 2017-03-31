@@ -1,0 +1,3 @@
+$('.message-list').append('<%= escape_javascript(render partial: "partials/message_list", locals: { messages: @messages, list_container: false }) %>');
+ajaxInProgress = false;
+if (<%= escape_javascript (!@messages.any?).to_s %>) { needsUpdate = false };

@@ -10,6 +10,11 @@ class MessagesController < ApplicationController
   	Notification.create(user: @event.user, content: "#{current_user.username} posted something on #{@event.name}'s message board") if @message.save && @event.user != current_user  
   end
 
+  def get
+  	@resource = params[:resource].constantize.find(params[:id])
+   	@messages = @resource.messages[(params[:lowerLimit].to_i)..(params[:upperLimit].to_i)]
+  end
+
   private
 
   def message_params

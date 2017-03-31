@@ -1,0 +1,9 @@
+<% if list_container %>
+	<ul class="message-list list-group">
+<% end %>
+<% messages.each do |message| %>
+	<%= render partial: 'partials/message', locals: {message: message} %> 
+<% end %>
+<% if list_container %>
+	</ul>
+<% end %>
