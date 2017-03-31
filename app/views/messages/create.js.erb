@@ -1,2 +1,2 @@
 $('.message-list').prepend("<%= escape_javascript render partial: 'partials/message', locals: {message: @message} %>");
-$('#message').hide().fadeIn(450);
+$('#message-<%= escape_javascript @message.id.to_s %>').hide().fadeIn(450);
