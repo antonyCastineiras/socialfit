@@ -1,0 +1,15 @@
+<li class="list-group-item" id="message-<%= message.id %>">
+	<div class="media">
+		<div class="media-left">
+			<% if message.user.avatar.present? %>
+				<%= cl_image_tag("sofit/#{message.user.avatar.filename}", transformation: { width: 64, height: 64, crop: 'fit' } ) %>
+			<% else %>
+				<%= cl_image_tag("sample.jpg", transformation: { width: 64, height: 64 } )%>
+			<% end %>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading"><%= message.user.username %></h4>
+			<p><%= message.content %></p>
+		</div>
+	</div>
+</li>

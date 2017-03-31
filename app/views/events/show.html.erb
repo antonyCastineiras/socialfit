@@ -46,6 +46,40 @@
 	<% end %>
 </div>
 
+<div class="row">
+	<h3 class="text-center">Message Board</h3>
+	<div class="col-xs-8">
+		<div class="message-list">
+			<% if @event.messages.any? %>
+				<ul class="list-group">
+					<% @event.messages.order('created_at DESC').first(6).each do |message| %>
+						<%= render partial: 'partials/message', locals: {message: message} %>
+					<% end %>
+				</ul>
+			<% else %>
+				<p>There are currently no messages for this Event. Be the first to leave one.</p>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="col-xs-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= form_tag event_messages_create_path(@event), method: 'post', remote: true do %>
+					<%= hidden_field_tag :user_id, current_user.id %>
+					<div class="input-group">
+						<%= text_field_tag :content, nil, class: 'form-control' %>
+						<span class="input-group-btn">
+							<%= submit_tag "Send message", class: 'btn btn-primary' %>
+						</span>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <div id="map" style="width: '100%'; height: 380px"></div>
 <script>
 	$(document).on('turbolinks:load', function() {

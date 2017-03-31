@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :messages   
+
   has_friendship
   geocoded_by :postcode, if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }
   after_validation :geocode #if: ->(obj){ obj.postcode.present? and obj.postcode_changed? }

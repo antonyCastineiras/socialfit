@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :sports
 
+  has_many :messages
+
   def name=(s)
     write_attribute(:name, s.to_s.titleize)
   end

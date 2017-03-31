@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+
   get 'notifications/index'
 
   get 'invites/accept'
@@ -20,7 +22,9 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pages/home' => 'pages#home', as: 'user_home'
   
-  resources :events
+  resources :events do 
+    post '/messages/create' => 'messages#create'
+  end
   get 'events/join/:id' => 'events#join', as: 'join_event'
   get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'
   get 'users/update_events' => 'events#update_events', as: 'update_events'
