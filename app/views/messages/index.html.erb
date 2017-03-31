@@ -1,0 +1,7 @@
+<h3>All messages for <%= @event.name %></h3>
+
+<ul class="message-list list-group">
+	<% @event.messages.order('created_at DESC').each do |message| %>
+		<%= render partial: 'partials/message', locals: {message: message} %>
+	<% end %>
+</ul>

@@ -56,6 +56,7 @@
 						<%= render partial: 'partials/message', locals: {message: message} %>
 					<% end %>
 				</ul>
+				<%= link_to "See all #{@event.messages.count} messages for this event",event_messages_index_path(@event) %>
 			<% else %>
 				<p>There are currently no messages for this Event. Be the first to leave one.</p>
 			<% end %>

@@ -1,4 +1,9 @@
 class MessagesController < ApplicationController
+	def index
+		@event = Event.find(params[:event_id])
+		@messages = @event.messages
+	end
+
   def create
   	@event = Event.find(params[:event_id])
   	params[:user_id].to_i == current_user.id ? @message = Message.new(message_params) : @message = Message.new
