@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
   def get
   	@resource = params[:resource].constantize.find(params[:id])
-   	@messages = @resource.messages[(params[:lowerLimit].to_i)..(params[:upperLimit].to_i)]
+   	@messages = @resource.messages.order('created_at DESC')[(params[:lowerLimit].to_i)..(params[:upperLimit].to_i)]
   end
 
   private

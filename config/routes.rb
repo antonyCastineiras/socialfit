@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'replies/create'
+
+  get 'replies/index'
+
   get 'messages/create'
 
   get 'notifications/index'
@@ -25,6 +29,10 @@ Rails.application.routes.draw do
   resources :events do 
     post '/messages/create' => 'messages#create'
     get '/messages/index' => 'messages#index'
+  end
+
+  resources :messages, only: [:index] do
+    resources :replies, only: [:create, :index]
   end
 
   get 'messages/get' => 'messages#get'

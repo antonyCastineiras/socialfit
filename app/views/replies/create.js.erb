@@ -1,0 +1,11 @@
+var messageContainer = $('#message-<%= escape_javascript @message.id.to_s %>');
+repliesContainer =  messageContainer.find('.replies-container');
+showRepliesContainerLink = messageContainer.find('a.show-replies-container');
+
+//if the replies container is not currently visible then slide it into view
+if (!repliesContainer.is(':visible') ) { 
+	toggleElementWithLink(repliesContainer, showRepliesContainerLink); 
+};
+
+repliesContainer.prepend('<%= escape_javascript render partial: "partials/reply", locals: { reply: @reply } %>');
+repliesContainer.children().first().hide().fadeIn(450);

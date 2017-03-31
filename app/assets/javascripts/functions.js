@@ -15,3 +15,24 @@ function isCorrectController(controller,action) {
 	secondLast = paths[paths.length-2]
 	return (lastPath === action && secondLast === controller)
 }
+
+function toggleElementWithLink(elem,link) {
+		if (elem.hasClass('hidden')) {
+			elem.removeClass('hidden').hide();
+		}
+		elem.slideToggle(450);
+		switch(link.text()) {
+			case "Reply":
+				link.text('Hide Reply Form');
+				break;
+			case "Hide Reply Form":
+				link.text('Reply');
+				break;
+			case "See Replies":
+				link.text('Hide Replies');
+				break;
+			case "Hide Replies":
+				link.text('See Replies');
+				break;
+		}
+}

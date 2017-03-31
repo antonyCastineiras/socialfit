@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :invites
   has_many :pending_invites, through: :invites, source: :invite
   has_many :notifications
+  has_many :replies
 
   acts_as_taggable
   acts_as_taggable_on :interests, :sports

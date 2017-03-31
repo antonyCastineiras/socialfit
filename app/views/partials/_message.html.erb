@@ -8,8 +8,31 @@
 			<% end %>
 		</div>
 		<div class="media-body">
+
 			<h4 class="media-heading"><%= message.user.username %></h4>
 			<p><%= message.content %></p>
+			<a href="#" class="show-replies-container">See Replies</a>
+			<a href="#" class="show-reply-form">Reply</a>
+
+			<div class="replies-form hidden">
+				<%= form_tag message_replies_path(message), method: :post, remote: true do  %>
+					<div class="input-group">
+						<%= text_field_tag :content, nil, class: 'form-control', placeholder: 'Enter your reply here' %>
+						<span class="input-group-btn">
+							<%= submit_tag "Send Reply", class: 'btn btn-primary' %>
+						</span>
+					</div>
+				<% end %>
+			</div>
+			<div class="replies-container hidden">
+				<% if message.replies.any? %>
+					<% message.replies.order('created_at DESC').first(6).each do |reply| %>
+						<%= render partial: 'partials/reply', locals: {reply: reply} %>
+					<% end %>
+				<% else %>
+					<p>No replies yet. Be the first.</p>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </li>
