@@ -1,6 +1,14 @@
 $(document).on('turbolinks:load', function() {
+	ajaxInProgress = false;
+	needsUpdate = true;
 	showRepliesContainerOnClick();
 	showReplyFormOnClick();
+	if (pathEndsWith('replies')) { showRepliesList() }
+	$(window).scroll(function() {
+		if ($('.replies-list')[0]) {
+			needsMoreReplies();
+		}
+	});
 });
 
 function showRepliesContainerOnClick() {
@@ -17,5 +25,28 @@ function showReplyFormOnClick() {
 		event.preventDefault();
 		toggleElementWithLink(replyForm,$(this));
 	});
+}
+
+function showRepliesList() {
+	repliesList = $('.replies-list');
+	if (repliesList.hasClass('hidden')) { repliesList.removeClass('hidden') }
+	repliesList.hide().slideToggle(450)
+}
+
+function needsMoreReplies() {
+	repliesList = $('.replies-list');
+	if( repliesList && isScrolledIntoView($('.replies-list .reply:last-child')) && !ajaxInProgress && needsUpdate) {
+		ajaxInProgress = true;
+		$.ajax({
+			type: 'get',
+			url: '/replies/get',
+			dataType: 'script',
+			data: {
+				lowerLimit: $('.replies-list .reply').length,
+				upperLimit: $('.replies-list .reply').length + 10,
+				id: $('#message-id').text()
+			}
+		});
+	}
 }
 

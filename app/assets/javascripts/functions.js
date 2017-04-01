@@ -36,3 +36,8 @@ function toggleElementWithLink(elem,link) {
 				break;
 		}
 }
+
+function pathEndsWith(string) {
+	paths = window.location.pathname.split('/'); 
+	return paths[paths.length-1] == string;
+}

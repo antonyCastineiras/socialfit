@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   get 'messages/get' => 'messages#get'
+  get 'replies/get' => 'replies#get'
 
   get 'events/join/:id' => 'events#join', as: 'join_event'
   get 'update_calendar' => 'events#update_calendar', as: 'update_calendar_events'

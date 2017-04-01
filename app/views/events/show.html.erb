@@ -52,7 +52,7 @@
 		<div class="message-list">
 			<% if @event.messages.any? %>
 				<ul class="list-group">
-					<% @event.messages.order('created_at DESC').first(6).each do |message| %>
+					<% @event.messages.order(updated_at: :desc).first(6).each do |message| %>
 						<%= render partial: 'partials/message', locals: {message: message} %>
 					<% end %>
 				</ul>

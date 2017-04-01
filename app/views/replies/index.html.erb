@@ -1,2 +1,22 @@
-<h1>Replies#index</h1>
-<p>Find me in app/views/replies/index.html.erb</p>
+<p id="message-id" class="hidden"><%= @message.id %></p>
+<div class="media" id="message-<%= @message.id %>">
+	<div class="media-left">
+		<% if @message.user.avatar.present? %>
+				<%= cl_image_tag("sofit/#{@message.user.avatar.filename}", transformation: { width: 64, height: 64, crop: 'fit' } ) %>
+			<% else %>
+				<%= cl_image_tag("sample.jpg", transformation: { width: 64, height: 64, crop: 'fit' } )%>
+			<% end %>
+	</div>
+
+	<div class="media-body">
+		<h4 class="media-heading"><%= @message.user.username %></h4>
+		<p><%= @message.content %></p>
+
+		<div class="replies-list">
+			<% @message.replies.order(updated_at: :desc).first(15).each do |reply| %>
+				<%= render partial: "partials/reply", locals: {reply: reply} %>
+			<% end %> 
+		</div>
+
+	</div>
+</div>

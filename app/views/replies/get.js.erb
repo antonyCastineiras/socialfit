@@ -1,0 +1,3 @@
+$('.replies-list').append('<%= escape_javascript(render partial: "partials/replies_list", locals: {replies: @replies}) %>');
+ajaxInProgress = false;
+if (<%= escape_javascript (!@replies.any?).to_s %>) { needsUpdate = false };
