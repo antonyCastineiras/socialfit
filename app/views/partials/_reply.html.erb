@@ -1,4 +1,4 @@
-<div class="media reply">
+<div id="reply-<%= reply.id %>" class="media reply">
 	<div class="media-left">
 		<% if reply.user.avatar.present? %>
 				<%= cl_image_tag("sofit/#{reply.user.avatar.filename}", transformation: { width: 64, height: 64, crop: 'fit' } ) %>

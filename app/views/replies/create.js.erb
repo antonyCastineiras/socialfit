@@ -10,8 +10,12 @@ if (!repliesContainer.is(':visible') ) {
 //if it is the first message appended remove p element
 if (repliesContainer.find('p.no-replies')) {
 	repliesContainer.find('p.no-replies').remove();
-	repliesContainer.append('<%= escape_javascript link_to "See all replies", message_replies_path(@message) %>')
 }
+
+if (!repliesContainer.find('a.see-all-replies')[0]) {
+	repliesContainer.append('<%= escape_javascript link_to "See all replies", message_replies_path(@message), class: "see-all-replies" %>');
+}
+
 
 //adds the html genrerated from the reply partial to the partial list and then fades it in
 repliesContainer.prepend('<%= escape_javascript render partial: "partials/reply", locals: { reply: @reply } %>');

@@ -29,7 +29,7 @@
 					<% message.replies.order('created_at DESC').first(6).each do |reply| %>
 						<%= render partial: 'partials/reply', locals: {reply: reply} %>
 					<% end %>
-					<%= link_to "See all replies", message_replies_path(message) %>
+					<%= link_to "See all replies", message_replies_path(message), class: 'see-all-replies' %>
 				<% else %>
 					<p class="no-replies">No replies yet. Be the first.</p>
 				<% end %>
