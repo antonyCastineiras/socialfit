@@ -1,2 +1,8 @@
 $('.message-list').prepend("<%= escape_javascript render partial: 'partials/message', locals: {message: @message} %>");
 $('#message-<%= escape_javascript @message.id.to_s %>').hide().fadeIn(450);
+
+//when the message is the first one executes this code
+if ($('.message-list p.no-messages')[0]) {
+	$('.message-list p.no-messages').remove();
+	$('.message-list').append('<%= escape_javascript(link_to "See all #{@event.messages.count} messages for this event", event_messages_index_path(@event)) %>')
+}
