@@ -30,7 +30,7 @@ function showReplyFormOnClick() {
 function showRepliesList() {
 	repliesList = $('.replies-list');
 	if (repliesList.hasClass('hidden')) { repliesList.removeClass('hidden') }
-	repliesList.hide().slideToggle(450)
+	repliesList.hide().fadeIn(450)
 }
 
 function needsMoreReplies() {

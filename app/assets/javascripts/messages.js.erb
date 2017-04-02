@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load', function() {
+	hideMessageElements();
+	displayEditMessageFormOnClick();
 	needsUpdate = true;
 	ajaxInProgress = false;
 	$(window).scroll(function() {
@@ -7,6 +9,10 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 });
+
+function hideMessageElements() {
+	$('.edit_message').hide();
+}
 
 function needsMoreMessages() {
 	if ( isCorrectController("messages", "index") && isScrolledIntoView($('.message-list li:last-child')) && !ajaxInProgress && needsUpdate ) {
@@ -21,4 +27,14 @@ function needsMoreMessages() {
 						 id: $('#event-id').text() }
 		});
 	}
+}
+
+function displayEditMessageFormOnClick() {
+	$('a.edit-message').on('click', function(event) {
+		event.preventDefault();
+		content = $(this).closest('.message').find('.message-content');
+		form = $(this).closest('.message').find('.edit_message');
+		$(form).toggle();
+		$(content).toggle();
+	});
 }

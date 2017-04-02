@@ -1,4 +1,4 @@
-<li class="list-group-item" id="message-<%= message.id %>">
+<li class="list-group-item message" id="message-<%= message.id %>">
 	<div class="media">
 		<div class="media-left">
 			<% if message.user.avatar.present? %>
@@ -10,7 +10,11 @@
 		<div class="media-body">
 
 			<h4 class="media-heading"><%= message.user.username %></h4>
-			<p><%= message.content %></p>
+			<p class="message-content"><%= message.content %></p>
+			<% if message.user == current_user %>
+				<%= render partial: "forms/edit_message_form", locals: {message: message} %>
+				<a href="#" class="edit-message">Edit</a>
+			<% end %>
 			<a href="#" class="show-replies-container">See Replies</a>
 			<a href="#" class="show-reply-form">Reply</a>
 

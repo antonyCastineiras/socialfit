@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get '/messages/index' => 'messages#index'
   end
 
-  resources :messages, only: [:index] do
+  resources :messages, only: [:index, :update] do
     resources :replies, only: [:create, :index]
   end
 

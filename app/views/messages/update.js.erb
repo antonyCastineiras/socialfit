@@ -1,0 +1,7 @@
+messageContainer = $('#message-<%= escape_javascript(@message.id.to_s) %>');
+messageContent = messageContainer.find('.message-content');
+messageForm = messageContainer.find('.edit_message');
+
+messageContent.text('<%= escape_javascript(@message.content) %>');
+messageForm.toggle();
+messageContent.toggle();

@@ -9,6 +9,9 @@ class RepliesController < ApplicationController
   	@message = Message.find(params[:message_id])
   end
 
+  def update
+  end
+
   def get
   	@message = Message.find(params[:id])
   	@replies = @message.replies.order(updated_at: :desc)[params[:lowerLimit].to_i..params[:upperLimit].to_i]
