@@ -1,0 +1,28 @@
+/* layout variables */
+$mobile-padding-lg: 3.75em;
+$mobile-padding-md: 1.25em;
+
+.container-fluid {
+	width: 100%;
+
+	/* Smartphones portrait */
+	@media (orientation: portrait) {
+	}
+
+	/* smartphones landscape */
+	@media (orientation: landscape) {
+		
+	}
+}
+
+#top .navbar {
+	/* Smartphones portrait */
+	@media (orientation: portrait) {
+		padding: $mobile-padding-lg 0;
+	}
+
+	/* smartphones landscape */
+	@media (orientation: landscape) {
+		padding: $mobile-padding-md 0;
+	}	
+}

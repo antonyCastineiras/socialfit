@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app for creating fitness related events with friends or strangers. It features the abilty to create events and share them with other users who can view these on their own personal clandar. Events are geolocated so that users can view events within the local area.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is currently in an unfinshed state but a live demo can be found here: [socialfit.herokuapp.com](https://socailfit.herokuapp.com/)
